@@ -1,0 +1,61 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  shortdescription: MyString
+  user_id: 1
+  category_id: 1
+  viciserverid: 1
+  active: false
+  campaign_type_id: 1
+  internal_notes: MyText
+  vici_campaign_id: MyString
+  add_to_list_id: 1
+  add_to_list_position: MyString
+  add_to_list_allow: false
+  teanscript_text: MyText
+  transcript_audio_file: MyString
+  campaign_start_date_time: 2013-05-11 00:32:08
+  campaign_end_date_time: 2013-05-11 00:32:08
+  public_stats_visible: false
+  amount_donated_total: 1.5
+  number_donations_total: 1
+  number_donations_today: 1
+  amount_donations_today: 1.5
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  inflate_stats_percent: 1.5
+  cost_per_call_minute: 1.5
+
+two:
+  name: MyString
+  description: MyText
+  shortdescription: MyString
+  user_id: 1
+  category_id: 1
+  viciserverid: 1
+  active: false
+  campaign_type_id: 1
+  internal_notes: MyText
+  vici_campaign_id: MyString
+  add_to_list_id: 1
+  add_to_list_position: MyString
+  add_to_list_allow: false
+  teanscript_text: MyText
+  transcript_audio_file: MyString
+  campaign_start_date_time: 2013-05-11 00:32:08
+  campaign_end_date_time: 2013-05-11 00:32:08
+  public_stats_visible: false
+  amount_donated_total: 1.5
+  number_donations_total: 1
+  number_donations_today: 1
+  amount_donations_today: 1.5
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  inflate_stats_percent: 1.5
+  cost_per_call_minute: 1.5

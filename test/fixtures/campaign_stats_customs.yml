@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  status_code: MyString
+  calls_today: 1
+  calls_life: 1
+  campaign_id: 1
+
+two:
+  status_code: MyString
+  calls_today: 1
+  calls_life: 1
+  campaign_id: 1
