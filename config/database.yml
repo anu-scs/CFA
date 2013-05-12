@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cfa_development
+  database: cfa_1_development
   pool: 5
   username: root
   password: root
@@ -24,7 +24,7 @@ test: &test
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cfa_test
+  database: cfa1_test
   pool: 5
   username: root
   password: root
@@ -33,7 +33,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cfa_production
+  database: cfa1_production
   pool: 5
   username: root
   password: root

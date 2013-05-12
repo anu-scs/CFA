@@ -14,7 +14,8 @@ gem "omniauth"
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'oauth2'
-
+gem 'activeadmin'
+gem 'meta_search', '>= 1.1.0.pre'
 group :development do
   gem "rails-erd"
 end
