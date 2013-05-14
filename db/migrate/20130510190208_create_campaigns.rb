@@ -9,12 +9,12 @@ class CreateCampaigns < ActiveRecord::Migration
       t.integer :viciserver_id
       t.boolean :active
       t.integer :campaign_type_id
-      t.text :internal_notes
+      t.text :internal_notes  
       t.string :vici_campaign_id
       t.integer :add_to_list_id
       t.string :add_to_list_position
       t.boolean :add_to_list_allow
-      t.text :teanscript_text
+      t.text :transcript_text
       t.string :transcript_audio_file
       t.datetime :campaign_start_date_time
       t.datetime :campaign_end_date_time

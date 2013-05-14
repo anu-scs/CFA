@@ -19,6 +19,8 @@ gem 'meta_search', '>= 1.1.0.pre'
 group :development do
   gem "rails-erd"
 end
+gem 'carrierwave'
+gem "rmagick"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

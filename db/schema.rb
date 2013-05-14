@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512101701) do
+ActiveRecord::Schema.define(:version => 20130513191431) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(:version => 20130512101701) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "campaign_images", :force => true do |t|
+    t.string   "campimage"
+    t.integer  "campaign_id"
+    t.string   "image_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "campaign_stats", :force => true do |t|
     t.integer  "campaign_id"
@@ -78,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20130512101701) do
     t.integer  "add_to_list_id"
     t.string   "add_to_list_position"
     t.boolean  "add_to_list_allow"
-    t.text     "teanscript_text"
+    t.text     "transcript_text"
     t.string   "transcript_audio_file"
     t.datetime "campaign_start_date_time"
     t.datetime "campaign_end_date_time"
