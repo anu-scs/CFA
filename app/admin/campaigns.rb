@@ -31,13 +31,4 @@ ActiveAdmin.register Campaign do
     end
     f.buttons
   end
-  
-  index do
-    column "Images" do |image|
-      image.campaign_images.each do |x|
-        image_tag x.campimage_url(:thumb)
-      end
-    end
-    default_actions
-  end
 end
