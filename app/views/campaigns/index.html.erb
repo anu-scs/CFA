@@ -1,2 +1,14 @@
-<h1>Campaigns#index</h1>
-<p>Find me in app/views/campaigns/index.html.erb</p>
+<script type="text/javascript" ">
+setInterval(function(){
+  $.ajax({
+  	method: "GET",
+  	url: "/campaigns.js"
+  });
+}, 30000);
+</script>
+
+	<div id="of_campaigns">
+		<%= @campaigns.count %>
+	</div>
+    
+    <p id="list_of_campaigns"><%= @campaigns.count %></p>

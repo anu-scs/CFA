@@ -1,0 +1,10 @@
+<h3>Hello</h3>
+<% @campaigns.each do |camp| %>
+  <%= camp.name %>
+  <% if camp.campaign_stats %>
+    <% camp.campaign_stats.each do |stat| %>
+      <%= stat.dialable_leads %>
+    <% end %>
+  <% end %>
+  <br />
+<% end %>

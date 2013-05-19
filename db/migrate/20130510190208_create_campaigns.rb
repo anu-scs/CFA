@@ -7,7 +7,7 @@ class CreateCampaigns < ActiveRecord::Migration
       t.integer :user_id
       t.integer :category_id
       t.integer :viciserver_id
-      t.boolean :active
+      t.boolean :active,           default:false
       t.integer :campaign_type_id
       t.text :internal_notes  
       t.string :vici_campaign_id

@@ -25,8 +25,14 @@ ActiveAdmin.register Campaign do
       f.input :transcript_text
       f.input :transcript_audio_file
       f.input :vici_campaign_id
-      f.has_many :campaign_images do |i|
-        i.input :campimage, :as => :file
+      if campaign.campaign_images
+        campaign.campaign_images.each do |x|
+          f.input :_destroy, :as=>:boolean, :required => false, :label => 'Remove image', :hint => f.template.image_tag(x.campimage.url(:thumb))
+        end
+      end
+      f.has_many :campaign_images do |p|
+        # i.input :campimage, :as => :file
+        p.input :campimage, :as => :file, :label => "Image" #,:hint => p.template.image_tag(p.object.campimage.url(:thumb)) 
       end
     end
     f.buttons

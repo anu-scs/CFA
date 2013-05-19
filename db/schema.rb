@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20130513191431) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "viciserver_id"
-    t.boolean  "active"
+    t.boolean  "active",                   :default => false
     t.integer  "campaign_type_id"
     t.text     "internal_notes"
     t.string   "vici_campaign_id"
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(:version => 20130513191431) do
     t.float    "amount_donations_today"
     t.float    "inflate_stats_percent"
     t.float    "cost_per_call_minute"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   create_table "categories", :force => true do |t|
