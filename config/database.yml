@@ -15,8 +15,8 @@ development:
   database: cfa_1_development
   pool: 5
   username: root
-  password: root
-  # password: m4tth3wl3p4c3k
+  # password: root
+  password: m4tth3wl3p4c3k
   host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
@@ -29,8 +29,8 @@ test: &test
   database: cfa1_test
   pool: 5
   username: root 
-  password: root
-  # password: m4tth3wl3p4c3k
+  # password: root
+  password: m4tth3wl3p4c3k
   host: 127.0.0.1
 
 production:
@@ -40,8 +40,8 @@ production:
   database: cfa1_production
   pool: 5
   username: root
-  # password: m4tth3wl3p4c3k
-  password: root
+  password: m4tth3wl3p4c3k
+  # password: root
   host: 127.0.0.1
 
 cucumber:
