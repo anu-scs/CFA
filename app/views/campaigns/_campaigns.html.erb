@@ -1,9 +1,20 @@
-<h3>Hello</h3>
+<h3>Campaigns</h3>
 <% @campaigns.each do |camp| %>
-  <%= camp.name %>
-  <% if camp.campaign_stats %>
-    <% camp.campaign_stats.each do |stat| %>
-      <%= stat.dialable_leads %>
+  <h6>Name : <%= link_to camp.name, campaign_path(camp) rescue "" %></h6>
+  <h6><%= camp.campaign_start_date_time rescue "" %></h6>
+  <h6><%= camp.campaign_end_date_time rescue "" %></h6>
+  <h6><%= camp.shortdescription rescue "" %></h6>
+  <% if camp.campaign_images %>
+    <h6> Campaign Images: </h6>
+    <% camp.campaign_images.each do |img| %>
+      <%= image_tag img.campimage_url(:thumb) %><br />
+    <% end %>
+  <% end %>
+  <% if camp.campaign_stat %>
+    <h6> Campaign Stats: </h6>
+    <% camp.campaign_stat do |stat| %>
+      <h6> Dialable Leads : <%= stat.dialable_leads rescue ""%></h6>
+      <h6> Dialable Leads : <%= stat.calls_in_progress rescue ""%></h6>
     <% end %>
   <% end %>
   <br />

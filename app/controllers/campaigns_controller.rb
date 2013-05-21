@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @campaigns = Campaign.includes(:campaign_stats).all
+    @campaigns = Campaign.includes(:campaign_stat).all
     respond_to do |format|
       format.html
       format.js
@@ -13,12 +13,13 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @campaign }
+      format.js
     end
   end
   
   def new
     @campaign = Campaign.new
-
+    @campaign.campaign_images.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @campaign }

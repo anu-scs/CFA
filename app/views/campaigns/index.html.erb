@@ -2,13 +2,14 @@
 setInterval(function(){
   $.ajax({
   	method: "GET",
-  	url: "/campaigns.js"
+  	url: "/campaigns",
+  	dataType: "script"
   });
 }, 30000);
 </script>
-
 	<div id="of_campaigns">
+		The count of Campaigns: 
 		<%= @campaigns.count %>
 	</div>
     
-    <p id="list_of_campaigns"><%= @campaigns.count %></p>
+    <p id="list_of_campaigns">The campaigns count again, <%= @campaigns.count %>. But we will be updating campaign data dynamically here. Current view is for testing purpose.</p>

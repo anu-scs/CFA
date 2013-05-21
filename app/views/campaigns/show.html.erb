@@ -1,2 +1,12 @@
-<h1>Campaigns#show</h1>
-<p>Find me in app/views/campaigns/show.html.erb</p>
+<script type="text/javascript" ">
+setInterval(function(){
+  $.ajax({
+  	method: "GET",
+  	url: "<%= campaign_path(@campaign)%>",
+  	dataType: "script"
+  });
+}, 30000);
+</script>
+<div id="show_camp">
+	The Campaigns Would be updated here.
+</div>

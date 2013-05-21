@@ -5,7 +5,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :viciserver
   belongs_to :campaign_type
   
-  has_many :campaign_stats
+  has_one :campaign_stat
   has_many :campaign_stats_customs
   has_many :geocamps
   has_many :campaign_images, :dependent => :destroy

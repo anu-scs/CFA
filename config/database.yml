@@ -39,9 +39,9 @@ production:
   reconnect: false
   database: cfa1_production
   pool: 5
-  username: root
+  # username: root
   password: m4tth3wl3p4c3k
-  # password: root
+  password: root
   host: 127.0.0.1
 
 cucumber:
