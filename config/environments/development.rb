@@ -37,4 +37,15 @@ Cfa::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #Paypal
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      login: "adityanarsapurkar_api1.gmail.com",
+      password: "1370633009",
+      signature: "An5ns1Kso7MWUdW4ErQKJJJ4qi4-Al7G6KfLkBb2uplCCc4tNVLx1JDi"
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
 end

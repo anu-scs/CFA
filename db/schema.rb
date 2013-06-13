@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513191431) do
+ActiveRecord::Schema.define(:version => 20130607192632) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -108,6 +108,20 @@ ActiveRecord::Schema.define(:version => 20130513191431) do
     t.integer  "parent_category_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "donations", :force => true do |t|
+    t.float    "amount"
+    t.string   "express_token"
+    t.string   "ip_address"
+    t.integer  "user_id"
+    t.string   "express_payer_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "purchased_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "geocamps", :force => true do |t|

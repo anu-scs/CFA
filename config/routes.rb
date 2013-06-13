@@ -7,6 +7,9 @@ Cfa::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users
   resources :campaigns
+  resources :donations
+  match 'donations/express_checkout' => "donations#express_checkout", :as => :donations_express_checkout, :via => :post
+  
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation:
   # first created -> highest priority.
