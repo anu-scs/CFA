@@ -53,3 +53,5 @@ gem 'activemerchant'
 
 # To use debugger
 # gem 'debugger'
+gem "font-awesome-rails"
+
