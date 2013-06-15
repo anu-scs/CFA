@@ -5,21 +5,88 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    /*
+     * Instance CirclePlayer inside jQuery doc ready
+     *
+     * CirclePlayer(jPlayerSelector, media, options)
+     *   jPlayerSelector: String - The css selector of the jPlayer div.
+     *   media: Object - The media object used in jPlayer("setMedia",media).
+     *   options: Object - The jPlayer options.
+     *
+     * Multiple instances must set the cssSelectorAncestor in the jPlayer options. Defaults to "#cp_container_1" in CirclePlayer.
+     */
+
+    var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
+    {
+      m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+      oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+    }, {
+      cssSelectorAncestor: "#cp_container_1"
+    });
+
+    // This code creates a 2nd instance. Delete if not required.
+
+    var myOtherOne = new CirclePlayer("#jquery_jplayer_2",
+    {
+      m4a:"http://www.jplayer.org/audio/m4a/Miaow-04-Lismore.m4a",
+      oga:"http://www.jplayer.org/audio/ogg/Miaow-04-Lismore.ogg"
+    }, {
+      cssSelectorAncestor: "#cp_container_2"
+    });
+
+    var myOthertwo = new CirclePlayer("#jquery_jplayer_3",
+    {
+      mp3:"http://labs.widewebsol.com/mit/CryOnMyShoulder.mp3"
+    }, {
+      supplied: "mp3",
+      cssSelectorAncestor: "#cp_container_3"
+    });
+    var myOtherthree = new CirclePlayer("#jquery_jplayer_4",
+    {
+      mp3:"http://labs.widewebsol.com/mit/CryOnMyShoulder1.mp3"
+    }, {
+      supplied: "mp3",
+      cssSelectorAncestor: "#cp_container_4"
+    });
+    var myOtherfour = new CirclePlayer("#jquery_jplayer_5",
+    {
+      mp3:"http://labs.widewebsol.com/mit/CryOnMyShoulder2.mp3"
+    }, {
+      supplied: "mp3",
+      cssSelectorAncestor: "#cp_container_5"
+    });
+    var myOtherfive = new CirclePlayer("#jquery_jplayer_6",
+    {
+      mp3:"http://labs.widewebsol.com/mit/CryOnMyShoulder3.mp3"
+    }, {
+      supplied: "mp3",
+      cssSelectorAncestor: "#cp_container_6"
+    });
+    var myOthersix = new CirclePlayer("#jquery_jplayer_7",
+    {
+      mp3:"http://labs.widewebsol.com/mit/CryOnMyShoulder4.mp3"
+    }, {
+      supplied: "mp3",
+      cssSelectorAncestor: "#cp_container_7"
+    });
+  });
+</script>
 </head>
 <body class="fixed-top breakpoint-1280">
-	<%= render 'layouts/header'%>	
-	<div id="main" role="main" class="page-container row-fluid full-width-page">
-		<div class="page-content no-min-height" data-height="1469">
-			<%= render 'layouts/messages' %>
-			<%= yield %>
-		</div> <!--! end of .container -->
-	</div> <!--! end of #main -->
-	<div class="footer">
-		2013 &copy; Metronic by keenthemes.
-		<div class="span pull-right">
-			<span class="go-top"><i class="icon-angle-up"></i></span>
-		</div>
-	</div>
+  <%= render 'layouts/header'%>	
+
+  <%= yield %>
+
+  <div class="footer">
+    2013 &copy; Metronic by keenthemes.
+    <div class="span pull-right">
+      <span class="go-top"><i class="icon-angle-up"></i></span>
+    </div>
+  </div>
+  <%= javascript_include_tag "bottom_section" %>
 </body>
 </html>
 <script>
@@ -27,3 +94,4 @@
 		App.init();
 	});
 </script>
+
