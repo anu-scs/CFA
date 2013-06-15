@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require_tree .
+//= require jquery-1.8.3.min
+//= require jquery-ui-1.10.1.custom.min
+//= require bootstrap.min
+//= require breakpoints
+//= require jquery.slimscroll.min
+//= require jquery.blockui
+//= require jquery.cookie
+//= require jquery.uniform.min
+//= require app

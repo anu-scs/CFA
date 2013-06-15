@@ -3,30 +3,27 @@
 <head>
   <title>Call For America</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application", "jquery-ui-1.10.2" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </header>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
-          </div>
-          <footer>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+<body class="fixed-top breakpoint-1280">
+	<%= render 'layouts/header'%>	
+	<div id="main" role="main" class="page-container row-fluid full-width-page">
+		<div class="page-content no-min-height" data-height="1469">
+			<%= render 'layouts/messages' %>
+			<%= yield %>
+		</div> <!--! end of .container -->
+	</div> <!--! end of #main -->
+	<div class="footer">
+		2013 &copy; Metronic by keenthemes.
+		<div class="span pull-right">
+			<span class="go-top"><i class="icon-angle-up"></i></span>
+		</div>
+	</div>
 </body>
 </html>
+<script>
+	jQuery(document).ready(function() {
+		App.init();
+	});
+</script>
