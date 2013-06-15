@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* more CSS Document */
+
+.special{ padding: 0 !important; background: #eeeeee !important;  border: none !important;}
+.specialTitle{ padding: 0 !important; background: #eeeeee !important; }
+.special .caption{ margin: 0 !important;}
+.titlePart1, titlePart2{ height: 24px !important; display: inline-block !important;}
+.titlePart1{ background: #ed4e2a; padding: 5px;}
+.titlePart2{ margin: 5px; color: #848484 !important;}
+.littleSpan{ min-width: 90px; text-align: right; padding-right: 10px;}
+.yellow{ background: #ffb848 !important;}
+.mauve{ background: #852b99 !important;}
+.green{ background: #28b779 !important;}
+
+.statistiques{ padding: 0 !important;}
+.descSpecial{ padding-right: 80px;}
+
+
+.specialCollapse{ width: 100px !important; background-image: none !important;}
+
+.chartSpecial{ padding-right: 0 !important;}
+#chartContainer{ display: inline;}
+.firstLi{ border-top: none !important; color: #fff; display: block; height: 0px; padding-bottom: 0 !important;}
+
+.borderedProfile{ border-bottom: 1px solid #b2b2b2; margin-bottom: 20px;}
+
+.grayBox{ background: #f7f9fd !important; border: 1px solid #899FB6;}
+.dashboard-stat .details1 {
+
+}
+.dashboard-stat .details1 .number {
+padding-top: 25px;
+text-align: right;
+font-size: 34px;
+letter-spacing: -1px;
+font-weight: 300;
+color: #fff;
+margin-bottom: 18px;
+}
+.dashboard-stat .details1 .desc {
+text-align: right;
+font-size: 16px;
+letter-spacing: 0px;
+font-weight: 300;
+color: #fff; 
+}
+.dashboard-stat .visualh {
+width: 80px;
+height: 82px;
+display: block;
+float: left;
+padding-top: 10px;
+padding-left: 15px;
+}
+.dashboard-stat .details4 {
+float: right;
+margin-right: 11px;
+margin-top: 22px;
+}
