@@ -33,7 +33,7 @@ Import fonts
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 */
 
-@import url(font.css);
+@import url(assets/fonts/font.css);
 
 
 /***
@@ -121,7 +121,7 @@ Close icon used for modal dialog and other UI element close buttons
   width: 9px;
   height: 9px;
   background-repeat: no-repeat !important;
-  background-image: url("../img/remove-icon-small.png") !important;
+  background-image: url("assets/remove-icon-small.png") !important;
 }
 
 /***
@@ -489,7 +489,7 @@ Page sidebar
   display: block;
   width: 8px;
   height: 25px;
-  background-image: url("../img/sidebar-menu-arrow.png");
+  background-image: url("assets/sidebar-menu-arrow.png");
   float: right;
   position: absolute;
   right:0px;
@@ -639,7 +639,7 @@ Page sidebar
   margin-top: 8px;
   width: 13px;
   height: 13px;
-  background-image: url(../img/search-icon.png);
+  background-image: url(assets/search-icon.png);
   background-repeat: no-repeat;
 }
  
@@ -1205,29 +1205,29 @@ Portlets
 }
 
 .portlet-title .tools > a.remove {
-  background-image:url(../img/portlet-remove-icon.png);
+  background-image:url(assets/portlet-remove-icon.png);
   background-repeat: no-repeat;
   width: 11px;
 }
 
 .portlet-title .tools > a.config {
-  background-image:url(../img/portlet-config-icon.png);
+  background-image:url(assets/portlet-config-icon.png);
   background-repeat: no-repeat;
   width: 12px;
 }
 
 .portlet-title .tools > a.reload {
-  background-image:url(../img/portlet-reload-icon.png);
+  background-image:url(assets/portlet-reload-icon.png);
   width: 13px;
 }
 
 .portlet-title .tools > a.expand {
-  background-image:url(../img/portlet-expand-icon.png);
+  background-image:url(assets/portlet-expand-icon.png);
   width: 14px;
 }
 
 .portlet-title .tools > a.collapse {
-  background-image:url(../img/portlet-collapse-icon.png);
+  background-image:url(assets/portlet-collapse-icon.png);
   width: 14px;
 }
 
@@ -1418,27 +1418,27 @@ Box portlet
 
 .portlet.box .portlet-title .tools > a.remove, 
 .portlet.solid .portlet-title .tools > a.remove {
-  background-image:url(../img/portlet-remove-icon-white.png);
+  background-image:url(assets/portlet-remove-icon-white.png);
 }
 
 .portlet.box .portlet-title .tools > a.config,
 .portlet.solid .portlet-title .tools > a.config {
-  background-image:url(../img/portlet-config-icon-white.png);
+  background-image:url(assets/portlet-config-icon-white.png);
 }
 
 .portlet.box .portlet-title .tools > a.reload,
 .portlet.solid .portlet-title .tools > a.reload {
-  background-image:url(../img/portlet-reload-icon-white.png);
+  background-image:url(assets/portlet-reload-icon-white.png);
 }
 
 .portlet.box .portlet-title .tools > a.expand,
 .portlet.solid .portlet-title .tools > a.expand {
-  background-image:url(../img/portlet-expand-icon-white.png);
+  background-image:url(assets/portlet-expand-icon-white.png);
 }
 
 .portlet.box .portlet-title .tools > a.collapse,
 .portlet.solid .portlet-title .tools > a.collapse {
-  background-image:url(../img/portlet-collapse-icon-white.png);
+  background-image:url(assets/portlet-collapse-icon-white.png);
 }
 
 /* portlet buttons */
@@ -1621,7 +1621,7 @@ Custom icon buttons
 }
 
 .icon-btn i {
-  font-size: 20px !important;
+  font-size: 26px !important;
   color: #777 !important;
 }
 
@@ -2236,7 +2236,7 @@ Zoom icon overlay on images
 }
 
 .zoom .zoom-icon {
-  background-image:url("../img/overlay-icon.png");
+  background-image:url("assets/overlay-icon.png");
   background-color: #222;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -3311,7 +3311,7 @@ Styler Panel
 }
 
 .color-panel .icon-color {
-  background:#c9c9c9 url(../img/icon-color.png) center no-repeat !important;
+  background:#c9c9c9 url(assets/icon-color.png) center no-repeat !important;
 }
 
 .color-panel .icon-color:hover {
@@ -3320,7 +3320,7 @@ Styler Panel
 
 .color-panel .icon-color-close {
   display:none;
-  background:#3d3d3d url(../img/icon-color-close.png) center no-repeat !important;
+  background:#3d3d3d url(assets/icon-color-close.png) center no-repeat !important;
 }
 
 .color-panel .icon-color-close:hover {
@@ -4511,7 +4511,7 @@ Horezantal Menu(new in v1.2)
     display: inline-block;
     padding: 11px 22px 11px 22px !important;
     cursor: pointer;
-    background: url("/assets/hor-menu-search.png") no-repeat center;
+    background: url(assets/hor-menu-search.png) no-repeat center;
 }
 
 .header .hor-menu .hor-menu-search-form-toggler:hover {
@@ -4520,7 +4520,7 @@ Horezantal Menu(new in v1.2)
 }
 
 .header .hor-menu .hor-menu-search-form-toggler.hide {
-   background: #101010 url(../img/hor-menu-search-close.png) no-repeat center;
+   background: #101010 url(assets/hor-menu-search-close.png) no-repeat center;
 }
 
 .header .hor-menu a.hor-menu-search-form-toggler-close {
@@ -4543,7 +4543,7 @@ Horezantal Menu(new in v1.2)
   height: 32px;
   width: 10px;
   display: inline-block;
-  background: #2d2d2d url(../img/search-icon.png) no-repeat center;
+  background: #2d2d2d url(assets/search-icon.png) no-repeat center;
 }
 
 .header .hor-menu .search-form .btn:hover {
@@ -4784,33 +4784,33 @@ Social Icons(new in v1.2.2)
   background-position:0 -38px;
 }
 
-.social-icons .amazon {background: url(../img/social/amazon.png) no-repeat;}
-.social-icons .behance {background: url(../img/social/behance.png) no-repeat;}
-.social-icons .blogger {background: url(../img/social/blogger.png) no-repeat;}
-.social-icons .deviantart {background: url(../img/social/deviantart.png) no-repeat;}
-.social-icons .dribbble {background: url(../img/social/dribbble.png) no-repeat;}
-.social-icons .dropbox {background: url(../img/social/dropbox.png) no-repeat;}
-.social-icons .evernote {background: url(../img/social/evernote.png) no-repeat;}
-.social-icons .facebook {background: url(../img/social/facebook.png) no-repeat;}
-.social-icons .forrst {background: url(../img/social/forrst.png) no-repeat;}
-.social-icons .github {background: url(../img/social/github.png) no-repeat;}
-.social-icons .googleplus {background: url(../img/social/googleplus.png) no-repeat;}
-.social-icons .jolicloud {background: url(../img/social/jolicloud.png) no-repeat;}
-.social-icons .last-fm {background: url(../img/social/last-fm.png) no-repeat;}
-.social-icons .linkedin {background: url(../img/social/linkedin.png) no-repeat;}
-.social-icons .picasa {background: url(../img/social/picasa.png) no-repeat;}
-.social-icons .pintrest {background: url(../img/social/pintrest.png) no-repeat;}
-.social-icons .rss {background: url(../img/social/rss.png) no-repeat;}
-.social-icons .skype {background: url(../img/social/skype.png) no-repeat;}
-.social-icons .spotify {background: url(../img/social/spotify.png) no-repeat;}
-.social-icons .stumbleupon {background: url(../img/social/stumbleupon.png) no-repeat;}
-.social-icons .tumblr {background: url(../img/social/tumblr.png) no-repeat;}
-.social-icons .twitter {background: url(../img/social/twitter.png) no-repeat;}
-.social-icons .vimeo {background: url(../img/social/vimeo.png) no-repeat;}
-.social-icons .wordpress {background: url(../img/social/wordpress.png) no-repeat;}
-.social-icons .xing {background: url(../img/social/xing.png) no-repeat;}
-.social-icons .yahoo {background: url(../img/social/yahoo.png) no-repeat;}
-.social-icons .youtube {background: url(../img/social/youtube.png) no-repeat;}
+.social-icons .amazon {background: url(assets/social/amazon.png) no-repeat;}
+.social-icons .behance {background: url(assets/social/behance.png) no-repeat;}
+.social-icons .blogger {background: url(assets/social/blogger.png) no-repeat;}
+.social-icons .deviantart {background: url(assets/social/deviantart.png) no-repeat;}
+.social-icons .dribbble {background: url(assets/social/dribbble.png) no-repeat;}
+.social-icons .dropbox {background: url(assets/social/dropbox.png) no-repeat;}
+.social-icons .evernote {background: url(assets/social/evernote.png) no-repeat;}
+.social-icons .facebook {background: url(assets/social/facebook.png) no-repeat;}
+.social-icons .forrst {background: url(assets/social/forrst.png) no-repeat;}
+.social-icons .github {background: url(assets/social/github.png) no-repeat;}
+.social-icons .googleplus {background: url(assets/social/googleplus.png) no-repeat;}
+.social-icons .jolicloud {background: url(assets/social/jolicloud.png) no-repeat;}
+.social-icons .last-fm {background: url(assets/social/last-fm.png) no-repeat;}
+.social-icons .linkedin {background: url(assets/social/linkedin.png) no-repeat;}
+.social-icons .picasa {background: url(assets/social/picasa.png) no-repeat;}
+.social-icons .pintrest {background: url(assets/social/pintrest.png) no-repeat;}
+.social-icons .rss {background: url(assets/social/rss.png) no-repeat;}
+.social-icons .skype {background: url(assets/social/skype.png) no-repeat;}
+.social-icons .spotify {background: url(assets/social/spotify.png) no-repeat;}
+.social-icons .stumbleupon {background: url(assets/social/stumbleupon.png) no-repeat;}
+.social-icons .tumblr {background: url(assets/social/tumblr.png) no-repeat;}
+.social-icons .twitter {background: url(assets/social/twitter.png) no-repeat;}
+.social-icons .vimeo {background: url(assets/social/vimeo.png) no-repeat;}
+.social-icons .wordpress {background: url(assets/social/wordpress.png) no-repeat;}
+.social-icons .xing {background: url(assets/social/xing.png) no-repeat;}
+.social-icons .yahoo {background: url(assets/social/yahoo.png) no-repeat;}
+.social-icons .youtube {background: url(assets/social/youtube.png) no-repeat;}
 
 
 

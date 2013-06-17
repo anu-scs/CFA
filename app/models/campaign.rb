@@ -18,4 +18,10 @@ class Campaign < ActiveRecord::Base
                   :campaign_images_attributes
                   
   accepts_nested_attributes_for :campaign_images, :allow_destroy => true
+
+
+  def stats_custom_by_code(status_code, meth)
+    stats_custom = campaign_stats_custom.where(status_code: status_code).first rescue nil
+    return stats_custom.send(meth.to_sym) rescue 0
+  end
 end
