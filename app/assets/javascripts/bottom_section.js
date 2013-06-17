@@ -6,5 +6,6 @@
 //= require jquery.cookie
 //= require jquery.uniform.min
 //= require app
-
+//= require jquery.validate.min
+//= require login
 
