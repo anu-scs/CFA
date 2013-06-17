@@ -35,9 +35,11 @@ class CampaignsController < ApplicationController
   # POST /vendors.json
   def create
     @campaign = Campaign.new(params[:campaign])
-
+    @campaign.build_campaign_stat
+    @campaign.campaign_stats_customs.build
     respond_to do |format|
       if @campaign.save
+        
         format.html { redirect_to @campaign, notice: 'Campaign was successfully created and sent for review.' }
         format.json { render json: @campaign, status: :created, location: @campaign }
       else
@@ -54,7 +56,7 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if @campaign.update_attributes(params[:campaign])
-        format.html { redirect_to @vendor, notice: 'Campaign was successfully updated and sent for review.' }
+        format.html { redirect_to @campaign, notice: 'Campaign was successfully updated and sent for review.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -5,9 +5,9 @@ class Campaign < ActiveRecord::Base
   belongs_to :viciserver
   belongs_to :campaign_type
   
-  has_one :campaign_stat
-  has_many :campaign_stats_customs
-  has_many :geocamps
+  has_one :campaign_stat, :dependent => :destroy
+  has_many :campaign_stats_customs, :dependent => :destroy
+  has_many :campaign_stats_geo, :dependent => :destroy
   has_many :campaign_images, :dependent => :destroy
   
   attr_accessible :active, :add_to_list_allow, :add_to_list_id, :add_to_list_position, :amount_donated_total, 
