@@ -1,12 +1,13 @@
 class DonationsController < ApplicationController
   def express_checkout
-    response = EXPRESS_GATEWAY.setup_purchase((params[:donation_amount].to_f * 100),
+    response = EXPRESS_GATEWAY.setup_purchase((params[:donation][:amount].to_f * 100),
       ip: request.remote_ip,
-      return_url: new_donation_path,
-      cancel_return_url: root_path,
-      locale: I18n.locale.to_s.sub(/-/, '_'), #you can put 'en' if you don't know what it means :)
+      return_url: url_for(:action => 'new', :only_path => false),
+      cancel_return_url: url_for(:action => 'index', :controller => 'home', :only_path => false),
+      locale: I18n.locale.to_s.sub(/-/, '_') #you can put 'en' if you don't know what it means :)
       # allow_guest_checkout: 'true',   #payment with credit card for non PayPal users
     )
+
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
   
