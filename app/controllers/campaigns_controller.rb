@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @campaigns = Campaign.includes(:campaign_stat).all
+    @campaigns = Campaign.includes(:campaign_stat).where(status: true)
     respond_to do |format|
       format.html
       format.js

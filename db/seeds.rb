@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+    CampaignType.create(name:'test type1')
+    CampaignType.create(name:'test type2')
+    Category.create(name:'test category1')
+    Category.create(name:'test category2')

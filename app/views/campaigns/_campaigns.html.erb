@@ -31,9 +31,9 @@
                 <%= campaign.transcript_text rescue "" %>
                 <p><a href="#">www.mywebsite.com</a></p>
                 <ul class="unstyled inline">
-                  <li><i class="icon-calendar"></i> 18 Jan 1982</li>
-                  <li><i class="icon-map-marker"></i> Category</li>
-                  <li><i class="icon-map-marker"></i> Type</li>
+                  <li><i class="icon-calendar"></i> <%= campaign.campaign_start_date_time.strftime("%d %b %Y") rescue '' %></li>
+                  <li><i class="icon-map-marker"></i> <%= campaign.category.name  rescue ''%></li>
+                  <li><i class="icon-map-marker"></i> <%= campaign.campaign_type.name  rescue ''%></li>
                   <li>
                     <span class="rating" style="vertical-align: middle;">
                       <span class="star"></span>
