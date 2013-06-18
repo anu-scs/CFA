@@ -36,7 +36,7 @@ class CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(params[:campaign])
     @campaign.build_campaign_stat
-    @campaign.campaign_stats_customs.build
+    @campaign.campaign_stats_custom.build
     respond_to do |format|
       if @campaign.save
         

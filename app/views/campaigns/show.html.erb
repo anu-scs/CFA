@@ -234,24 +234,24 @@
                                        <div class="span12">
                                           <div class="tab-pane row-fluid active">
                                                    <ul class="unstyled profile-nav span3">
-                                                      <li><img src="/assets/profile/profile-img.png" alt="" /></li>
+                                                      <li>              <%= image_tag @campaign.campaign_images.first.campimage_url rescue '' %></li>
                                                       
                                                    </ul>
                                                    <div class="span9">
                                                       <div class="row-fluid">
                                                          <div class="span8 profile-info">
-                                                            <h1>Support 1st assignement</h1>
-                                                            <p><div id="jquery_jplayer_1" class="cp-jplayer"></div>
-		<div id="jquery_jplayer_1" class="cp-jplayer"></div>
+                                                            <h1><%=@campaign.name %></h1>
+                                                            <p><div id="jquery_jplayer_<%=@campaign.id%>" class="cp-jplayer"></div>
+		<div id="jquery_jplayer_<%=@campaign.id%>" class="cp-jplayer"></div>
 		<div class="prototype-wrapper" style="margin-left:-24px; float:left; width:150px; height:20px;"> 
-			<div id="cp_container_1" class="cp_container">
+			<div id="cp_container_<%=@campaign.id%>" class="cp_container">
 				
 				<ul class="cp-controls b" style="padding: 1px 0 0 24px;">
 				  <li><a class="cp-play p" style="display: block;" tabindex="1">play</a></li>
 					<li><a class="cp-pause ph" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
 				</ul>
 			</div>
-			</div> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p>
+			</div><%= @campaign.transcript_text rescue "" %></p>
                                                             <p><a href="#">www.mywebsite.com</a></p>
                                                             <ul class="unstyled inline">
                                                                <li><i class="icon-calendar"></i> 18 Jan 1982</li>
@@ -267,55 +267,91 @@
                                                                   </span>
                                                                </li>
                                                             </ul>
-                                                            <div class="portlet-body">
-                                                               <div class="row-fluid">
-                                                                  <a href="#" class="icon-btn span3">
-                                                                     <i class="icon-play-circle"></i>
-                                                                     <div>Play Recordings</div>
-                                                                     <span class="badge badge-success">2</span>
-                                                                  </a>
-                                                                  <a href="#" class="icon-btn span3">
-                                                                     <i class="icon-facebook-sign"></i>
-                                                                     <div>Facebook Like</div>
-                                                                     <span class="badge badge-info">4</span>
-                                                                  </a>
-                                                                   <a href="#" class="icon-btn span3">
-                                                                     <i class="icon-twitter-sign"></i>
-                                                                     <div>Twitter Share</div>
-                                                                     <span class="badge badge-important">12</span>
-                                                                  </a>
-                                                                  <a href="#" class="icon-btn span3">
-                                                                     <i class="icon-plus-sign"></i>
-                                                                     <div>Add Number</div>
-                                                                  </a>
-                                                               </div>
-                                                               
-                                                            </div>
-                                                         </div>
+  
+                <div class="portlet-body">
+                  <div class="row-fluid">
+                    <a href="#" class="icon-btn span3">
+                      <i class="icon-play-circle"></i>
+                      <div>Play Recordings</div>
+                      <span class="badge badge-success">4</span>
+                    </a>
+                    <a href="#" class="icon-btn span3">
+                      <i class="icon-facebook-sign"></i>
+                      <div>Facebook Like</div>
+                      <span class="badge badge-info">12</span>
+                    </a>
+                    <a href="#" class="icon-btn span3">
+                      <i class="icon-twitter-sign"></i>
+                      <div>Twitter Share</div>
+                      <span class="badge badge-info">12</span>
+                    </a>
+                    <a href="#" class="icon-btn span3">
+                      <i class="icon-plus-sign"></i>
+                      <div>Add Number</div>
+                    </a>
+                  </div>
+                </div><!-- end portlet-body -->
+                  
+                                                       </div>
                                                          <!--end span8-->
                                                          
                                                          <!--start span4-->
                                                          <div class="span4">
                                                             <div class="portlet sale-summary">
-                                                               <ul class="unstyled">
-                                                                  <li class="firstLi">.</li>
-                                                                  <li>
-                                                                     <span class="sale-info">$ TODAY</span> 
-                                                                     <span class="sale-num">$409.00</span>
-                                                                  </li>
-                                                                  <li>
-                                                                     <span class="sale-info">REMAINING </span> 
-                                                                     <span class="sale-num">$341.05</span>
-                                                                  </li>
-                                                                  <li>
-                                                                     <span class="sale-info">DAILY BUDGET</span> 
-                                                                     <span class="sale-num">$77.45s</span>
-                                                                  </li>
-                                                                  <li>
-                                                                     <span class="sale-info">DONORS</span> 
-                                                                     <span class="sale-num">41</span>
-                                                                  </li>
-                                                               </ul>
+                                       <div class="portlet-title" style="background: #fff !important;">
+                    <h4>CALLS STATICS
+                      <div class="tools">
+                        <div class="btn-group pull-right" data-toggle="buttons-radio">
+                          <a href="javascript:;" class="btn mini">Today</a>
+                          <a href="javascript:;" class="btn mini active">Forever</a>
+                        </div>
+                      </div>
+                    </h4>                            
+                  </div>
+                                          
+                  <ul class="unstyled">
+                    <li class="firstLi"></li>
+                    <li>
+                      <span class="sale-info">Calls Remaining <i class="icon-plus"></i></span>
+                      <span class="sale-num"><%=@campaigns.campaign_stat.dialable_leads rescue 0 %></span>
+                    </li>
+                    <li>
+                      <span class="sale-info">Answered </span>
+                      <span class="sale-num"><%=@campaigns.stats_custom_by_code("PU","calls_today") rescue 0 %> </span>
+                    </li>
+                    <li>
+                      <span class="sale-info">Interested</span>
+                      <span class="sale-num">
+                        <% if @campaign.stats_custom_by_code("SVYEXT","calls_today") > 0 %>
+                           <%=@campaign.stats_custom_by_code("SVYEXT","calls_today") %>
+                        <% elsif @campaign.stats_custom_by_code("SVYREC","calls_today") > 0 %>
+                           <%=@campaign.stats_custom_by_code("SVYREC","calls_today") %>
+                        <% elsif @campaign.stats_custom_by_code("SVYCLM","calls_today") > 0 %>
+                           <%=@campaign.stats_custom_by_code("SVYCLM","calls_today") %>
+                        <% end %>
+                      </span>
+                    </li>
+                    <li>
+                      <span class="sale-info">Transferred</span>
+                      <span class="sale-num"><%= @campaigns.campaign_stat.transferred_count rescue 0 %><!--transferred_count_.campaign_stats--></span>
+                    </li>
+                    <li>
+                      <span class="sale-info">Recorded</span>
+                      <span class="sale-num"><%=@campaigns.campaign_stat.recording_count rescue 0 %></span>
+                    </li>
+                    <li>
+                      <span class="sale-info">Left Message</span>
+                      <span class="sale-num">
+                        <%= @campaign.stats_custom_by_code("AL","calls_today") + @campaign.stats_custom_by_code("AL","calls_today") %>
+                      </span>
+                    </li>
+                    <li>
+                      <span class="sale-info">No Answer</span>
+                      <span class="sale-num"><%=@campaigns.campaign_stat.no_answer_calls_count_life rescue 0 %></span>
+                    </li>
+                  </ul>
+                 
+
                                                                <a href="#" class="btn green mini" style="width: 95%;">DONOR CREDIT ROLL</a>
                                                                <!--checking-->
                                                                <div class="controls_part_inner">
