@@ -19,7 +19,7 @@ class Campaign < ActiveRecord::Base
                   
   accepts_nested_attributes_for :campaign_images, :allow_destroy => true
 
-  STATUS_ACTIVE = 1
+  STATUS_ACTIVE = 2
   STATUS_PENDING = 1
   scope :active, where(status: STATUS_ACTIVE)
   scope :pending, where(status: STATUS_PENDING)
