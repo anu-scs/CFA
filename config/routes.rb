@@ -7,7 +7,11 @@ Cfa::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users
   resources :campaigns
-  resources :donations
+  resources :donations do
+    collection do
+      get 'has_donated'
+    end
+  end
   match 'donations/express_checkout' => "donations#express_checkout", :as => :donations_express_checkout, :via => :post
   
   ActiveAdmin.routes(self)
