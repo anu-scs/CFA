@@ -143,7 +143,7 @@
 										
 					<i class="icon-angle-right"></i>
 									</li>
-				<li><a href="#"><strong>Support the 1st Ammendment</strong></a></li>
+				<li><a href="#"><strong><%= @campaign.name %></strong></a></li>
 						
 						
 			</ul>
@@ -254,9 +254,9 @@
 			</div><%= @campaign.transcript_text rescue "" %></p>
                                                             <p><a href="#">www.mywebsite.com</a></p>
                                                             <ul class="unstyled inline">
-                                                               <li><i class="icon-calendar"></i> 18 Jan 1982</li>
-                                                               <li><i class="icon-map-marker"></i> Category</li>
-                                                               <li><i class="icon-map-marker"></i> Type</li>
+                                                               <li><i class="icon-calendar"></i> <%= @campaign.campaign_start_date_time.strftime("%d %b %Y") rescue '' %></li>
+                                                               <li><i class="icon-map-marker"></i><%= @campaign.category.name  rescue ''%></li>
+                                                               <li><i class="icon-map-marker"></i> <%= campaign.campaign_type.name  rescue ''%></li>
                                                                <li>
                                                                   <span class="rating" style="vertical-align: middle;">
                                                                   <span class="star"></span>
@@ -294,130 +294,30 @@
                   
                                                        </div>
                                                          <!--end span8-->
-                                                         
+                                                            
                                                          <!--start span4-->
                                                          <div class="span4">
                                                             <div class="portlet sale-summary">
-                                       <div class="portlet-title" style="background: #fff !important;">
-                    <h4>CALLS STATICS
-                      <div class="tools">
-                        <div class="btn-group pull-right" data-toggle="buttons-radio">
-                          <a href="javascript:;" class="btn mini">Today</a>
-                          <a href="javascript:;" class="btn mini active">Forever</a>
-                        </div>
-                      </div>
-                    </h4>                            
-                  </div>
-                                          
-                  <ul class="unstyled">
-                    <li class="firstLi"></li>
-                    <li>
-                      <span class="sale-info">Calls Remaining <i class="icon-plus"></i></span>
-                      <span class="sale-num"><%=@campaigns.campaign_stat.dialable_leads rescue 0 %></span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Answered </span>
-                      <span class="sale-num"><%=@campaigns.stats_custom_by_code("PU","calls_today") rescue 0 %> </span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Interested</span>
-                      <span class="sale-num">
-                        <% if @campaign.stats_custom_by_code("SVYEXT","calls_today") > 0 %>
-                           <%=@campaign.stats_custom_by_code("SVYEXT","calls_today") %>
-                        <% elsif @campaign.stats_custom_by_code("SVYREC","calls_today") > 0 %>
-                           <%=@campaign.stats_custom_by_code("SVYREC","calls_today") %>
-                        <% elsif @campaign.stats_custom_by_code("SVYCLM","calls_today") > 0 %>
-                           <%=@campaign.stats_custom_by_code("SVYCLM","calls_today") %>
-                        <% end %>
-                      </span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Transferred</span>
-                      <span class="sale-num"><%= @campaigns.campaign_stat.transferred_count rescue 0 %><!--transferred_count_.campaign_stats--></span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Recorded</span>
-                      <span class="sale-num"><%=@campaigns.campaign_stat.recording_count rescue 0 %></span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Left Message</span>
-                      <span class="sale-num">
-                        <%= @campaign.stats_custom_by_code("AL","calls_today") + @campaign.stats_custom_by_code("AL","calls_today") %>
-                      </span>
-                    </li>
-                    <li>
-                      <span class="sale-info">No Answer</span>
-                      <span class="sale-num"><%=@campaigns.campaign_stat.no_answer_calls_count_life rescue 0 %></span>
-                    </li>
-                  </ul>
-                 
-
+                                                               <ul class="unstyled">
+                                                                  <li class="firstLi">.</li>
+                                                                  <li>
+                                                                     <span class="sale-info">$ TODAY</span> 
+                                                                     <span class="sale-num">$409.00</span>
+                                                                  </li>
+                                                                  <li>
+                                                                     <span class="sale-info">REMAINING </span> 
+                                                                     <span class="sale-num">$341.05</span>
+                                                                  </li>
+                                                                  <li>
+                                                                     <span class="sale-info">DAILY BUDGET</span> 
+                                                                     <span class="sale-num">$77.45s</span>
+                                                                  </li>
+                                                                  <li>
+                                                                     <span class="sale-info">DONORS</span> 
+                                                                     <span class="sale-num">41</span>
+                                                                  </li>
+                                                               </ul>
                                                                <a href="#" class="btn green mini" style="width: 95%;">DONOR CREDIT ROLL</a>
-                                                               <!--checking-->
-                                                               <div class="controls_part_inner">
-                                                               <h3>Doner Credit Roll</h3>
-                                           
-                                           <div class="flexslider">
-                                            <ul class="slides">
-                                                <li>
-                                        		<div class="dispa_ktu">	
-                                                    <div class="displa_sect"><span id="nmae_display"> Rajesh Kumawat </span></div>
-                                                    <div class="displa_sect_last"><span id="amt_display"> $151 <em>(5,651 calls) </em></span></div>
-                                                    <div  style="clear:both; margin:0px;"></div>
-                                      			</div>
-                                                                                                                              
-                                     			<div class="dispa_ktu">	
-                                            		<div class="displa_sect"><span id="date_display"> 12/02/2013 </span></div>
-                                                	<div class="displa_sect_last"><span id="city_display"> Georgia, USA </span></div>
-                                     				<div  style="clear:both; margin:0px;"></div>
-                                          		</div>
-                                                </li>
-                                                <li>
-                                                     <div class="dispa_ktu">                                           
-                                                                <div class="displa_sect"><span id="nmae_display"> Om Prakash </span></div>
-                                                                <div class="displa_sect_last"><span id="amt_display"> $251 <em>(561 calls) </em></span></div>
-                                                                <div  style="clear:both; margin:0px;"></div>
-                                                       </div>
-                                                                                                                              
-                                            <div class="dispa_ktu">      
-                                            	<div class="displa_sect"><span id="date_display"> 12/02/2013 </span></div>
-                                                <div class="displa_sect_last"><span id="city_display"> New York, USA </span></div>
-                                                <div  style="clear:both; margin:0px;"></div>
-                                           	</div>
-                                     
-                                                </li>
-                                                <li>
-                                                      <div class="dispa_ktu">
-                                           	
-                                            	<div class="displa_sect"><span id="nmae_display"> Rohitash </span></div>
-                                                <div class="displa_sect_last"><span id="amt_display"> $451 <em>(5,651 calls) </em></span></div>
-                                                <div  style="clear:both; margin:0px;"></div>
-                                           	</div>
-                                                                                                                              
-                                             <div class="dispa_ktu">
-                                            	<div class="displa_sect"><span id="date_display"> 2/20/2013 </span></div>
-                                                <div class="displa_sect_last"><span id="city_display"> washington dc, USA </span></div>
-                                                <div  style="clear:both; margin:0px;"></div>
-                                           	</div>
-                                           
-                                                </li>
-                                                <li>
-                                                      <div class="dispa_ktu">                                        
-                                                        <div class="displa_sect"><span id="nmae_display"> Narendra </span></div>
-                                                        <div class="displa_sect_last"><span id="amt_display"> $181 <em>(5 calls) </em></span></div>
-                                                         <div  style="clear:both; margin:0px;"></div>
-                                                    </div>
-                                                                                                                              
-                                                    <div class="dispa_ktu">
-                                                        <div class="displa_sect"><span id="date_display"> 1/25/2013 </span></div>
-                                                        <div class="displa_sect_last"><span id="city_display"> Florida, USA </span></div>
-                                                         <div  style="clear:both; margin:0px;"></div>                                                   
-                                                   </div>
-                                                </li>
-                                            </ul>
-                                          </div></div>
-
-                                                               <!--stop checking-->
                                                             </div>
                                                          </div>
                                                          <!--end span4-->
@@ -1081,6 +981,3 @@ setInterval(function(){
   });
 }, 30000);
 </script>
-<div id="show_camp">
-	The Campaigns Would be updated here.
-</div>

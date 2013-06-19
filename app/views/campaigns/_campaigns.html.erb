@@ -91,65 +91,7 @@
                 </div><!-- end portlet-body -->
                   
               </div><!--end span8-->
-
-              <div class="span4"><!-- right most section-->
-                <div class="portlet sale-summary">
-                  <div class="portlet-title" style="background: #fff !important;">
-                    <h4>CALLS STATICS
-                      <div class="tools">
-                        <div class="btn-group pull-right" data-toggle="buttons-radio">
-                          <a href="javascript:;" class="btn mini">Today</a>
-                          <a href="javascript:;" class="btn mini active">Forever</a>
-                        </div>
-                      </div>
-                    </h4>                            
-                  </div>
-
-                  <ul class="unstyled">
-                    <li class="firstLi"></li>
-                    <li>
-                      <span class="sale-info">Calls Remaining <i class="icon-plus"></i></span>
-                      <span class="sale-num"><%=campaign.campaign_stat.dialable_leads rescue 0 %></span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Answered </span>
-                      <span class="sale-num"><%=campaign.stats_custom_by_code("PU","calls_today") rescue 0 %> </span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Interested</span>
-                      <span class="sale-num">
-                        <% if campaign.stats_custom_by_code("SVYEXT","calls_today") > 0 %>
-                           <%=campaign.stats_custom_by_code("SVYEXT","calls_today") %>
-                        <% elsif campaign.stats_custom_by_code("SVYREC","calls_today") > 0 %>
-                           <%=campaign.stats_custom_by_code("SVYREC","calls_today") %>
-                        <% elsif campaign.stats_custom_by_code("SVYCLM","calls_today") > 0 %>
-                           <%=campaign.stats_custom_by_code("SVYCLM","calls_today") %>
-                        <% end %>
-                      </span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Transferred</span>
-                      <span class="sale-num"><%= campaign.campaign_stat.transferred_count rescue 0 %><!--transferred_count_.campaign_stats--></span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Recorded</span>
-                      <span class="sale-num"><%=campaign.campaign_stat.recording_count rescue 0 %></span>
-                    </li>
-                    <li>
-                      <span class="sale-info">Left Message</span>
-                      <span class="sale-num">
-                        <%= campaign.stats_custom_by_code("AL","calls_today") + campaign.stats_custom_by_code("AL","calls_today") %>
-                      </span>
-                    </li>
-                    <li>
-                      <span class="sale-info">No Answer</span>
-                      <span class="sale-num"><%=campaign.campaign_stat.no_answer_calls_count_life rescue 0 %></span>
-                    </li>
-                  </ul>
-                 
-                </div>
-              </div><!--end span4-->
-          
+              <%= render :partial => 'calls_statics', :locals => { :campaign => campaign} %>
             </div><!--end row-fluid-->
           </div><!--end span9-->
         </div><!-- end tab pane-->
