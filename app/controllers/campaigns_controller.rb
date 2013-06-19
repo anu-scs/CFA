@@ -1,7 +1,9 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @campaigns = Campaign.includes(:campaign_stat).where(status: true)
+    @campaigns = Campaign.includes(:campaign_stat).active.limit 10
+    @pending_campaigns = Campaign.includes(:campaign_stat).pending.limit 10
+    
     respond_to do |format|
       format.html
       format.js
@@ -75,6 +77,20 @@ class CampaignsController < ApplicationController
       format.html { redirect_to campaigns_url }
       format.json { head :no_content }
     end
+  end
+
+  def get_campaigns_data
+    comment_list = Campaign.get_campaigns_hash
+    render json: comment_list.to_json
+  end
+
+  def search_pending_campaign
+    @pending_campaigns = Campaign.search_pending_campaign(params[:keyword])
+  end
+
+  def get_calls_stat
+    calls_stat_list = Campaign.get_calls_stat_hash(params[:campaign_id], params[:status])
+    render json: calls_stat_list.to_json
   end
 end
 

@@ -302,19 +302,19 @@
                                                                   <li class="firstLi">.</li>
                                                                   <li>
                                                                      <span class="sale-info">$ TODAY</span> 
-                                                                     <span class="sale-num">$409.00</span>
+                                                                     <span class="sale-num"><%= number_to_currency(@campaign.campaign_stat.amount_donations_today) rescue 0  %></span>
                                                                   </li>
                                                                   <li>
                                                                      <span class="sale-info">REMAINING </span> 
-                                                                     <span class="sale-num">$341.05</span>
+                                                                     <span class="sale-num"><%= number_to_currency(@campaign.campaign_stat.donations_remaining)  rescue 0 %></span>
                                                                   </li>
                                                                   <li>
                                                                      <span class="sale-info">DAILY BUDGET</span> 
-                                                                     <span class="sale-num">$77.45s</span>
+                                                                     <span class="sale-num"><%= number_to_currency(@campaign.campaign_stat.daily_spent_budget)  rescue 0 %></span>
                                                                   </li>
                                                                   <li>
                                                                      <span class="sale-info">DONORS</span> 
-                                                                     <span class="sale-num">41</span>
+                                                                     <span class="sale-num"><%= @campaign.campaign_stat.number_donations_life  rescue 0 %></span>
                                                                   </li>
                                                                </ul>
                                                                <a href="#" class="btn green mini" style="width: 95%;">DONOR CREDIT ROLL</a>
@@ -973,6 +973,7 @@
    
 <!-- OLD campaign show -->
 <script type="text/javascript" ">
+<!--
 setInterval(function(){
   $.ajax({
   	method: "GET",
@@ -980,4 +981,6 @@ setInterval(function(){
   	dataType: "script"
   });
 }, 30000);
+
+-->
 </script>

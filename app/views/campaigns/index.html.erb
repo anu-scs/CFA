@@ -1,3 +1,4 @@
+<%= javascript_include_tag "campaign" %>
 <div class="page-container row-fluid full-width-page" >
   <!-- BEGIN EMPTY PAGE SIDEBAR -->
   <div class="page-sidebar nav-collapse collapse visible-phone visible-tablet">
@@ -240,23 +241,9 @@
 		      </div>
           
           <!-- campaign details section begin -->
-		      <div class="portlet box yellow tabbable">
-			      <div class="portlet-title">
-				      <div class="caption"><i class="icon-reorder"></i>Campaigns</div>
-			      </div>
-			      <div class="portlet-body">
-					    <div class="tabbable portlet-tabs">
-							  <ul class="nav nav-tabs">
-						      <li><a href="#portlet_tab3" data-toggle="tab">Ended Campaigns</a></li>
-								  <li><a href="#portlet_tab2" data-toggle="tab">Future Pending Campaigns</a></li>
-								  <li class="active"><a href="#portlet_tab1" data-toggle="tab">Current Campaigns</a></li>
-							  </ul>
-                <!-- campaign list begin -->
-                <div id="list_of_campaigns" class="tab-content">
-                  <%= render :partial => 'campaigns'%>
-                </div>
-		          </div>
-		        </div>
+		      <div id="list_of_campaigns" class="portlet box yellow tabbable">
+			      <%= render :partial => 'campaigns'%>
+            
 		      </div><!-- end campaign details section  -->
           
           <div class="clearfix"></div>
@@ -266,11 +253,13 @@
 </div>
 
 <script type="text/javascript" ">
-setInterval(function(){
-  $.ajax({
-  	method: "GET",
-  	url: "/campaigns",
-  	dataType: "script"
-  });
-}, 30000);
+$(function(){
+    setTimeout(periodicallyCall, 30000);
+    function periodicallyCall(){
+      $.getCampaigns();
+      setTimeout(periodicallyCall, 30000);
+    }
+});
+
 </script>
+

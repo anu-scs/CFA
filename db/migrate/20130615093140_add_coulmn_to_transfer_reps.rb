@@ -23,5 +23,6 @@ class AddCoulmnToTransferReps < ActiveRecord::Migration
 		add_column :transfer_reps, :family, :string
 		add_column :transfer_reps, :faith, :string
 		add_column :transfer_reps, :organizational_memberships, :text
+    add_column :transfer_reps, :image1, :string
   end
 end
