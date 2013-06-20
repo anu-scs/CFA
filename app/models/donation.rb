@@ -1,48 +1,52 @@
 class Donation < ActiveRecord::Base
-  attr_accessible :amount, :express_token, :ip_address, :user_id, :express_payer_id, :first_name, :last_name, :email, :purchased_at
+
+  belongs_to :user
+  belongs_to :campaign
   
-  def self.make_order(token, user, ip_address)
+  after_create :update_campaign_stats, :update_campaign_global
+  
+  def self.make_order(token, user, ip_address, campaign_id = nil)
     order = self.new
     order.express_token = token
     order.ip_address = ip_address
     order.user = user
-    order.amount = total
+    order.campaign_id = campaign_id
     order.save!
-    order.purchase
     return order
   end
   
   def express_token=(token)
     self[:express_token] = token
     if new_record? and !token.blank?
-    details = EXPRESS_GATEWAY.details_for(token)
+      details = EXPRESS_GATEWAY.details_for(token)
       self.express_payer_id = details.payer_id
-      self.first_name = details.params[:first_name]
-      self.last_name = details.params[:last_name]
-      self.email = details.params[:email]
+      self.first_name = details.params["first_name"]
+      self.last_name = details.params["last_name"]
+      self.email = details.params["payer"]
+      self.amount = details.params["order_total"]
+      self.purchased_at = Time.now
     end
   end
   
+  private
   
-  def purchase
-    response = process_purchase
-    self.update_attribute(:purchased_at, Time.now) if response.success?
-    response.success?
-  end
-   
-private
- 
-  def process_purchase
-    unless express_token.blank?
-    EXPRESS_GATEWAY.purchase(total, express_purchase_options)
+  def update_campaign_stats
+    campaign_stat = self.try(:campaign).try(:campaign_stat)
+    if campaign_stat.present?
+      campaign_stat.number_donations_life = campaign_stat.amount_donations_today.to_f + 1
+      campaign_stat.amount_donations_life = campaign_stat.amount_donations_life.to_f + self.amount
+      campaign_stat.number_donations_today = campaign_stat.number_donations_today.to_f + 1
+      campaign_stat.amount_donations_today = campaign_stat.amount_donations_today.to_f + self.amount
+      campaign_stat.save
     end
   end
- 
-  def express_purchase_options
-    {
-    ip: ip_address,
-    token: express_token,
-    payer_id: express_payer_id
-    }
+  
+  def update_campaign_global
+   # campaign_stat.update_attributes( number_donations_life: campaign_stat.number_donations_life +1, 
+   #                                 amount_donations_life: campaign_stat.number_donations_life + self.amount,
+   #                                 number_donations_today: campaign_stat.number_donations_today + 1,
+   #                                 amount_donations_today: campaign_stat.amount_donations_today + self.amount
+   #                                   )    
   end
+  
 end

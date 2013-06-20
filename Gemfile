@@ -53,7 +53,7 @@ gem 'activemerchant'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
 gem "font-awesome-rails"
 
 group:development do
