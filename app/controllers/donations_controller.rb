@@ -1,6 +1,6 @@
 class DonationsController < ApplicationController
 
-  before_filter :valid_campaign, only: [:express_checkout]
+  #before_filter :valid_campaign, only: [:express_checkout]
 
   def express_checkout
     response = EXPRESS_GATEWAY.setup_purchase((params[:donation][:amount].to_f * 100),
@@ -34,7 +34,7 @@ class DonationsController < ApplicationController
   
   def valid_campaign
     unless Campaign.where(id: params[:campaign_id]).first
-      falsh[:notice] = "Something is wrong with your payment detail."
+      flash[:notice] = "Something is wrong with your payment detail."
       redirect_to root_path
     end
   end
