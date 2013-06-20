@@ -5,7 +5,7 @@ class DonationsController < ApplicationController
   def express_checkout
     response = EXPRESS_GATEWAY.setup_purchase((params[:donation][:amount].to_f * 100),
       ip: request.remote_ip,
-      return_url: url_for(:action => 'has_donated', :campaign_id => 1, :only_path => false),
+      return_url: url_for(:action => 'has_donated', :campaign_id => params[:campaign_id], :only_path => false),
       cancel_return_url: url_for(:action => 'index', :controller => 'home', :only_path => false),
       locale: I18n.locale.to_s.sub(/-/, '_')
     )
@@ -23,16 +23,20 @@ class DonationsController < ApplicationController
   def has_donated
     @order = Donation.make_order(params[:token], current_user, request.remote_ip, params[:campaign_id] )
     respond_to do |format|
-      format.html { flash[:notice] = "This is basic feature more is comming."}
+      format.html { 
+        flash[:notice] = "This is basic feature more is comming."
+        redirect_to :root
+      }
     end
   end
   
   private
   
   def valid_campaign
-    #unless Campaign.where(id: params[:campaign_id]).first
-    #  redirect_to root_path, falsh[:notice] = "Something is wrong with your payment detail."
-    #end
+    unless Campaign.where(id: params[:campaign_id]).first
+      falsh[:notice] = "Something is wrong with your payment detail."
+      redirect_to root_path
+    end
   end
 
 end

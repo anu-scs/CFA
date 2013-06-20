@@ -33,11 +33,11 @@ class Donation < ActiveRecord::Base
   def update_campaign_stats
     campaign_stat = self.try(:campaign).try(:campaign_stat)
     if campaign_stat.present?
-      campaign_stat.update_attributes( number_donations_life: campaign_stat.number_donations_life+1, 
-                                      amount_donations_life: campaign_stat.amount_donations_life + self.amount,
-                                      number_donations_today: campaign_stat.number_donations_today + 1,
-                                      amount_donations_today: campaign_stat.amount_donations_today + self.amount
-                                      )
+      campaign_stat.number_donations_life = campaign_stat.amount_donations_today.to_f + 1
+      campaign_stat.amount_donations_life = campaign_stat.amount_donations_life.to_f + self.amount
+      campaign_stat.number_donations_today = campaign_stat.number_donations_today.to_f + 1
+      campaign_stat.amount_donations_today = campaign_stat.amount_donations_today.to_f + self.amount
+      campaign_stat.save
     end
   end
   

@@ -1,0 +1,31 @@
+<% @pending_campaigns.each do |campaign| %>
+  <div class="row-fluid portfolio-block">
+    <div class="span5 portfolio-text">
+      <%= image_tag campaign.campaign_images.first.campimage_url(:thumb) rescue '' %>
+      <div class="portfolio-text-info">
+        <h4><%= link_to campaign.name, campaign %></h4>
+        <p><%= campaign.description rescue '' %></p>
+      </div>
+    </div>
+    <div class="span5">
+      <div class="portfolio-info">
+        Star Rating
+        <span class="rating" style="vertical-align: middle;">
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </span>
+      </div>
+      <div class="portfolio-info">
+         Total Number of Donations
+         <span><%=campaign.campaign_stat.number_donations_life rescue 0 %></span>
+      </div>
+    </div>
+    <div class="span2 portfolio-btn">
+      <%= link_to "View", campaign , :class => "btn bigicn-only"%>                        
+    </div>
+  </div>
+  
+<% end %>

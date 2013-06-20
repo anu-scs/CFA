@@ -6,7 +6,8 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3'
-gem 'mysql2'
+#gem 'mysql2'
+#gem 'pg'
 gem 'devise'
 # gem "cancan"
 gem "omniauth"
@@ -55,3 +56,6 @@ gem 'activemerchant'
 gem 'debugger'
 gem "font-awesome-rails"
 
+group:development do
+  gem 'mysql2'
+end
