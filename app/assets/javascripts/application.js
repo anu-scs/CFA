@@ -22,3 +22,5 @@
 //= require FusionCharts
 //= require FusionCharts.jqueryplugin
 //= require swfobject
+//= require ui-sliders
+//= require form-wizard
