@@ -1,0 +1,143 @@
+<div class="portlet-title">
+  <div class="caption"><i class="icon-reorder"></i>Campaigns</div>
+</div>
+<div class="portlet-body">
+  <div class="tabbable portlet-tabs">
+    <ul class="nav nav-tabs">
+      <li><a href="#portlet_tab3" data-toggle="tab">Ended Campaigns</a></li>
+      <li><a href="#portlet_tab2" data-toggle="tab">Future Pending Campaigns</a></li>
+      <li class="active"><a href="#portlet_tab1" data-toggle="tab">Current Campaigns</a></li>
+    </ul>
+    <div  class="tab-content">
+
+<div class="tab-pane active borderedProfile" id="portlet_tab1">
+  <% @campaigns.each do |campaign| %>
+    <div class="row-fluid profile">
+      <div class="span12">
+        <div class="tab-pane row-fluid active" id="tab_1_1">
+
+          <ul class="unstyled profile-nav span3">
+            <li>
+              <%= image_tag campaign.campaign_images.first.campimage_url rescue '' %>
+            </li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS FOREVER <span class="littleSpan" id="calls_forever_<%=campaign.id%>"><%=campaign.campaign_stat.total_calls_made_count_life rescue 0 %></span></a></li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS TODAY <span class="littleSpan yellow" id="calls_today_<%=campaign.id%>"><%=campaign.campaign_stat.total_calls_made_count_today rescue 0 %></span></a></li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS IN PROGRESS <span class="littleSpan mauve" id="calls_in_progress_<%=campaign.id%>"><%=campaign.campaign_stat.calculated_calls_in_progress rescue 0 %></span></a></li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">TOTAL DONATIONS <span class="littleSpan green" id="total_donations_<%=campaign.id%>"><%=campaign.campaign_stat.amount_donaions_life rescue 0 %></span></a></li>
+          </ul>
+
+          <div class="span9">
+            <div class="row-fluid">
+              <!-- mid section begin -->            
+              <div class="span8 profile-info">
+                <h1><%= link_to campaign.name, campaign %></h1>
+                <p><div id="jquery_jplayer_<%=campaign.id%>" class="cp-jplayer"></div>
+                <div class="prototype-wrapper" style="margin-left:-24px; float:left; width:150px; height:20px;">
+                  <div id="cp_container_<%=campaign.id%>" class="cp_container">
+                    <ul class="cp-controls b" style="padding: 1px 0 0 24px;">
+                      <li><a class="cp-play p" style="display: block;" tabindex="1">play</a></li><!-- go up to line 42 and you'll see how jplayer works to display the mp3 by creating different cp_container_1,2,3,4 definitions, use transcript_audio_file.campaigns for this one -->
+                      <li><a class="cp-pause ph" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
+                    </ul>
+                  </div>
+                </div></p>
+                <p class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"> <%= campaign.transcript_text rescue "" %> </p>
+                <p><a href="#">www.mywebsite.com</a></p>
+                <ul class="unstyled inline">
+                  <li><i class="icon-calendar"></i> <%= campaign.campaign_start_date_time.strftime("%d %b %Y") rescue '' %></li>
+                  <li><i class="icon-map-marker"></i> <%= campaign.category.name  rescue ''%></li>
+                  <li><i class="icon-map-marker"></i> <%= campaign.campaign_type.name  rescue ''%></li>
+                  <li>
+                    <span class="rating" style="vertical-align: middle;">
+                      <span class="star"></span>
+                      <span class="star"></span>
+                      <span class="star"></span>
+                      <span class="star"></span>
+                      <span class="star"></span>
+                    </span>
+                  </li>
+                </ul>
+                
+                <div class="portlet-body">
+                  <div class="row-fluid">
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-comments"></i>
+                      <div>Comments</div>
+                      <span class="badge badge-important">2</span>
+                    </a>
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-play-circle"></i>
+                      <div>Play Recordings</div>
+                      <span class="badge badge-success">4</span>
+                    </a>
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-plus-sign"></i>
+                      <div>Call A Friend</div>
+                    </a>
+                    <a href="#addmyModal1" class="icon-btn span3 popovers donate_now_link" id="test" data-campaign="<%=campaign.id%>" data-toggle="modal" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-money"></i>
+                      <div>Donate Now</div>
+                      <span class="badge badge-success">4</span>
+                    </a>
+                  </div>
+                 
+                  <div class="row-fluid">
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-facebook-sign"></i>
+                      <div>Facebook Like</div>
+                      <span class="badge badge-info">12</span>
+                    </a>
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-twitter-sign"></i>
+                      <div>Twitter Share</div>
+                      <span class="badge badge-info">12</span>
+                    </a>
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-map-marker"></i>
+                      <div>Geographical Data</div>                     
+                    </a>
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                      <i class="icon-bar-chart"></i>
+                      <div>Reports & Charts</div>
+                    </a>
+                  </div>
+                </div><!-- end portlet-body -->
+                  
+              </div><!--end span8-->
+              <%= render :partial => 'calls_statics', :locals => { :campaign => campaign} %>
+            </div><!--end row-fluid-->
+          </div><!--end span9-->
+        </div><!-- end tab pane-->
+      </div><!--end span12-->
+    </div><!-- row-fluid profile-->
+  <% end %><!--end campaign loop -->
+</div><!--end portlet_tab1-->
+
+<div class="tab-pane" id="portlet_tab2"><!--begin portlet_tab2-->
+   <div class="row-fluid search-forms search-default">
+      <form class="form-search" action="#" id="search_pending_campaign_form">
+        <div class="chat-form">
+          <div class="input-cont">   
+            <input type="text" id="search_pending_campaign_text" placeholder="Search..." class="m-wrap" />
+          </div>
+          <button type="button" class="btn green" id="search_pending_campaign_button">Search &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
+        </div>
+      </form>
+    </div>
+    <div id="pending_campaign_list">
+      <%= render :partial => 'pending_campaigns' %>
+    </div>
+</div>
+
+
+<div class="tab-pane" id="portlet_tab3">
+  <p>
+    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+  </p>
+  <p>
+    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+  </p>
+</div>
+      <%= render :partial => 'model_popup'%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,236 @@
+                     
+                      <div class="portlet-body">
+                       
+                        <!-- Button to trigger modal -->
+                        
+                       
+                        <!-- Modal -->
+                        <div id="addmyModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                              <h3 id="myModalLabel1">Amount to donate</h3>
+                           </div>
+                            <div class="modal-body">
+                              <div class="control-group">
+                                <div class="row-fluid">
+                                  <div class="span6 ">
+                                     <div class="control-group">
+                                        <label class="control-label">Donate to campaign</label>
+                                        <div class="controls">
+                                          <select class="span12 chosen_category"  data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="">Select spacific campaign to donate ...</option>
+                                            <option value="Category 1">Category 1</option>
+                                            <option value="Category 2">Category 2</option>
+                                            <option value="Category 3">Category 5</option>
+                                            <option value="Category 4">Category 4</option>
+                                           </select>
+                                        </div>
+                                     </div>
+                                  </div>
+                                  <!--/span-->
+                                  <div class="span6 ">
+                                    <div class="control-group">                                              
+                                      <label class="radio">
+                                        <input type="radio" name="optionsRadios2" value="option1" />
+                                          Donate to General Fund
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                <div class="row-fluid">
+                                  <div class="span6 ">
+                                    <div class="control-group">
+                                      <label for="firstName" class="control-label">I'd like to Donate</label>
+                                      <div class="controls">
+                                        <select tabindex="1" class="small m-wrap" style="float:left">
+                                           <option value="Category 1">USD</option>
+                                           <option value="Category 2">INR</option>
+                                           <option value="Category 3">USD</option>
+                                           <option value="Category 4">USD</option>
+                                        </select>
+                                        <span class="span1" >$</span>
+                                        <form method="post" action="/donations/express_checkout" id="donation_form">
+                                          <input type="text" name="donation[amount]" placeholder="1" value="1" id="slider-range-min-amount-text" class="span2 m-wrap slider-value"  >
+                                          <input type="hidden" name="donation[campaign_id]" id="hidden_campaign_field">
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="span6 ">
+                                     your donation will purchase:<br>
+                                     <span id="value-of-calls"></span> phone calls!
+                                  </div>
+                                </div>
+                               
+                                <div class="controls-row">
+                                  <label class="control-label">Amount $</label>
+                                  <span class="span7">
+                                    <div id="slider-range-min" class="slider bg-yellow"></div>
+                                    <div class="slider-value">Amount To be Donated:
+                                      <span class="slider-value" id="slider-range-min-amount"></span>
+                                    </div>
+                                  </span>
+                                </div>
+                              </div>                               
+                            </div>
+                           <div class="modal-footer">
+                              <button class="btn" type="submit" id="submit_donation">Make Donation</button>
+                              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                           </div>
+                           
+                        </div>
+                        
+                        
+                     </div>
+
+
+                     
+                     
+                     
+                     
+                  </div>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+            <!-- END PAGE CONTENT-->
+
+  <script>
+         jQuery(document).ready(function() { 
+	        jQuery('.payment .radio').click(function() {
+			     jQuery('.payment .active').removeClass('active')
+			     jQuery(this).addClass('active');
+		      });
+         // initiate layout and plugins payment controls
+		 //FormValidation.init();
+         App.init();  // set current page
+		 
+		  //FormWizard.init();
+         UISliders.initSliders();
+         UISliders.initKnowElements();
+		 
+  $("#slider-range-min-amount-text").keyup(function() {
+    $("#slider-range-min").slider({value: $(this).val()})
+	  $("#slider-range-min-amount").text($(this).val());
+	  $("#value-of-calls").text(commaSeparateNumber($(this).val()/0.02));
+  });
+
+  $('#submit_donation').click(function() {
+    $('#donation_form').submit();
+  });
+
+  $('.donate_now_link').click(function() {
+    var campaignId = $(this).data('campaign');
+    $("#hidden_campaign_field").val(campaignId);
+  })
+
+  
+		 
+		 jQuery('input:radio').change(
+    function(e){
+	   if ($(this).val() === 'option2')
+		  {
+			  if (jQuery(this).is(':checked')){
+				  jQuery("#cpass").show();
+				    jQuery("#user").show();
+				  jQuery("#pass").show();
+				    jQuery("#pss2").hide();
+		      } 
+		  }
+      else if ($(this).val() === 'option1')
+		  {
+			  if (jQuery(this).is(':checked')){
+				  jQuery("#cpass").hide();
+				    jQuery("#user").show();
+				  jQuery("#pass").show();
+				jQuery("#pss2").show();
+				  
+		     } 
+		}
+		 else if ($(this).val() === 'option3')
+		  {
+			  if (jQuery(this).is(':checked')){
+				  jQuery("#cpass").hide();
+				  jQuery("#user").hide();
+				  jQuery("#pass").hide();
+		     } 
+		}
+    });
+	
+			/////////////////////////////////
+			//		
+			/////		Display in Credit Role Section
+			//
+			//////////////////////
+	
+				jQuery("#submit_section").click(function() {
+							var text_sec = jQuery('span#slider-range-min-amount').text();
+							var calls = jQuery('span#value-of-calls').text();
+							if(calls !=0){
+							 document.getElementById("amt_display").innerHTML = text_sec+'<em>('+calls+' calls'+')</em>';
+							}else {
+								document.getElementById("amt_display").innerHTML = text_sec+'<em>(0 calls'+')</em>';
+								}
+				});
+				////////
+				jQuery('#Fullname').keyup(function() {
+					var Fullname = jQuery('#Fullname').val();
+					 document.getElementById("nmae_display").innerHTML = Fullname;					
+				});
+				////////
+				jQuery('#City').keyup(function() {
+					var City = jQuery('#City').val();
+					 document.getElementById("city_display").innerHTML = City;					
+				});
+				
+					var fullDate = new Date()
+					console.log(fullDate);
+					 //Thu May 19 2011 17:25:38 GMT+1000 {} 
+					  //convert month to 2 digits
+					   var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);   
+					   var currentDate = twoDigitMonth + "/" +  fullDate.getDate() + "/" + fullDate.getFullYear(); 
+					   console.log(currentDate); //19/05/2011
+					   
+					   //document.getElementById("date_display").innerHTML = currentDate;	// alert(currentDate);
+								
+		 	/******************/
+			// Closed the Doner Section
+			//
+			/*******************/
+			//////////
+			//	Display Or Not section:
+			//////////
+				jQuery('#check_Name').click(function() {
+						if(jQuery('#check_Name').is(":checked")) {
+							 jQuery('#nmae_display').text(jQuery('#Fullname').val());	
+							 	
+						} else {
+							 jQuery('#nmae_display').text('anonymous');
+						}
+								
+				});
+				
+				//////jQuery('#City').val()
+				jQuery('#check_City').click(function() {				
+					if(jQuery('#check_City').is(":checked")) {
+							jQuery('#city_display').text(jQuery('#City').val());	
+						} else {
+							 jQuery('#city_display').text('none');	
+						}
+				});
+				
+				/////
+				jQuery('#check_Amount').click(function() { 
+				var text_sec = jQuery('span#slider-range-min-amount').text();
+				var calls = jQuery('span#value-of-calls').text();
+					if(jQuery('#check_Amount').is(":checked")) {
+							jQuery('#amt_display').html(text_sec+'<em>('+calls+' calls'+')</em>');	
+						} else {
+							jQuery('#amt_display').text('none');		
+						}				 
+				});
+      });
+   </script>
+   
+ 
