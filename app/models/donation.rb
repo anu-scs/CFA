@@ -1,12 +1,16 @@
 class Donation < ActiveRecord::Base
-  attr_accessible :amount, :express_token, :ip_address, :user_id, :express_payer_id, :first_name, :last_name, :email, :purchased_at
+
   belongs_to :user
+  belongs_to :campaign
   
-  def self.make_order(token, user, ip_address)
+  after_create :update_campaign_stats, :update_campaign_global
+  
+  def self.make_order(token, user, ip_address, campaign_id = nil)
     order = self.new
     order.express_token = token
     order.ip_address = ip_address
     order.user = user
+    order.campaign_id = campaign_id
     order.save!
     return order
   end
@@ -22,6 +26,27 @@ class Donation < ActiveRecord::Base
       self.amount = details.params["order_total"]
       self.purchased_at = Time.now
     end
+  end
+  
+  private
+  
+  def update_campaign_stats
+    campaign_stat = self.try(:campaign).try(:campaign_stat)
+    if campaign_stat.present?
+      campaign_stat.update_attributes( number_donations_life: campaign_stat.number_donations_life+1, 
+                                      amount_donations_life: campaign_stat.amount_donations_life + self.amount,
+                                      number_donations_today: campaign_stat.number_donations_today + 1,
+                                      amount_donations_today: campaign_stat.amount_donations_today + self.amount
+                                      )
+    end
+  end
+  
+  def update_campaign_global
+   # campaign_stat.update_attributes( number_donations_life: campaign_stat.number_donations_life +1, 
+   #                                 amount_donations_life: campaign_stat.number_donations_life + self.amount,
+   #                                 number_donations_today: campaign_stat.number_donations_today + 1,
+   #                                 amount_donations_today: campaign_stat.amount_donations_today + self.amount
+   #                                   )    
   end
   
 end

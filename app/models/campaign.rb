@@ -8,6 +8,7 @@ class Campaign < ActiveRecord::Base
   has_one :campaign_stat
   has_many :campaign_stats_customs
   has_many :geocamps
+  has_many :donations
   has_many :campaign_images, :dependent => :destroy
   
   attr_accessible :active, :add_to_list_allow, :add_to_list_id, :add_to_list_position, :amount_donated_total, 
