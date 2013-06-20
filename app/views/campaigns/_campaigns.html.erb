@@ -56,7 +56,7 @@
                     </span>
                   </li>
                 </ul>
-
+                
                 <div class="portlet-body">
                   <div class="row-fluid">
                     <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
@@ -73,7 +73,7 @@
                       <i class="icon-plus-sign"></i>
                       <div>Call A Friend</div>
                     </a>
-                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                    <a href="#addmyModal1" class="icon-btn span3 popovers donate_now_link" id="test" data-campaign="<%=campaign.id%>" data-toggle="modal" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                       <i class="icon-money"></i>
                       <div>Donate Now</div>
                       <span class="badge badge-success">4</span>
@@ -137,7 +137,7 @@
     Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
   </p>
 </div>
-      
+      <%= render :partial => 'model_popup'%>
     </div>
   </div>
 </div>

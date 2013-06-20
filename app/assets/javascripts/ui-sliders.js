@@ -1,3 +1,13 @@
+function commaSeparateNumber(val){
+    while (/(\d+)(\d{3})/.test(val.toString())){
+      val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+    }
+    return val;
+  }
+
+
+
+
 var UISliders = function () {
 
     return {
@@ -49,11 +59,13 @@ var UISliders = function () {
             // range min
             $("#slider-range-min").slider({
                 range: "min",
-                value: 37,
+                value: 1,
                 min: 1,
-                max: 700,
+                max: 2000,
                 slide: function (event, ui) {
                     $("#slider-range-min-amount").text("$" + ui.value);
+					$("#slider-range-min-amount-text").val(ui.value);
+					$("#value-of-calls").text(commaSeparateNumber(ui.value/0.02));
                 }
             });
 
