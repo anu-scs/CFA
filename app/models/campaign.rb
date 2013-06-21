@@ -47,17 +47,17 @@ class Campaign < ActiveRecord::Base
     campaigns = Campaign.includes(:campaign_stat).active.limit 10
     campaign_list = campaigns.map{|campaign|
       { campaign_id: campaign.id,
-        calls_forever: campaign.campaign_stat.total_calls_made_count_life || 0,
-        calls_today: campaign.campaign_stat.total_calls_made_count_today || 0,
-        calls_in_progress: campaign.campaign_stat.calculated_calls_in_progress || 0,
-        total_donations: campaign.campaign_stat.amount_donations_life || 0,
-        calls_remaining: campaign.campaign_stat.dialable_leads || 0,
+        calls_forever: campaign.campaign_stat.try(:total_calls_made_count_life) || 0,
+        calls_today: campaign.campaign_stat.try(:total_calls_made_count_today) || 0,
+        calls_in_progress: campaign.campaign_stat.try(:calculated_calls_in_progress) || 0,
+        total_donations: campaign.campaign_stat.try(:amount_donations_life) || 0,
+        calls_remaining: campaign.campaign_stat.try(:dialable_leads) || 0,
         calls_answered: campaign.stats_custom_by_code("PU","calls_today") || 0,
         calls_interested: campaign.get_interested_calls("calls_today") || 0,
-        calls_transferred: campaign.campaign_stat.transferred_count_today || 0,
-        calls_recorded: campaign.campaign_stat.recordings_count_today || 0,
+        calls_transferred: campaign.campaign_stat.try(:transferred_count_today) || 0,
+        calls_recorded: campaign.campaign_stat.try(:recordings_count_today) || 0,
         left_message: campaign.stats_custom_by_code("AL","calls_today") + campaign.stats_custom_by_code("AA","calls_today"),
-        no_answer: campaign.campaign_stat.no_answer_calls_count_today || 0,
+        no_answer: campaign.campaign_stat.try(:no_answer_calls_count_today) || 0,
       }
     }
     return campaign_list
@@ -72,23 +72,23 @@ class Campaign < ActiveRecord::Base
     campaign = Campaign.includes(:campaign_stat).where(id: campaign_id.to_i).first
     calls_stat_list << if status == "today"
       { campaign_id: campaign.id,
-        calls_remaining: campaign.campaign_stat.dialable_leads || 0,
+        calls_remaining: campaign.campaign_stat.try(:dialable_leads) || 0,
         calls_answered: campaign.stats_custom_by_code("PU","calls_today") || 0,
         calls_interested: campaign.get_interested_calls("calls_today") || 0,
-        calls_transferred: campaign.campaign_stat.transferred_count_today || 0,
-        calls_recorded: campaign.campaign_stat.recordings_count_today || 0,
+        calls_transferred: campaign.campaign_stat.try(:transferred_count_today) || 0,
+        calls_recorded: campaign.campaign_stat.try(:recordings_count_today) || 0,
         left_message: campaign.stats_custom_by_code("AL","calls_today") + campaign.stats_custom_by_code("AA","calls_today"),
-        no_answer: campaign.campaign_stat.no_answer_calls_count_today || 0,
+        no_answer: campaign.campaign_stat.try(:no_answer_calls_count_today) || 0,
       }
     elsif status == "forever"
       { campaign_id: campaign.id,
-        calls_remaining: campaign.campaign_stat.dialable_leads || 0,
+        calls_remaining: campaign.campaign_stat.try(:dialable_leads) || 0,
         calls_answered: campaign.stats_custom_by_code("PU","calls_life") || 0,
         calls_interested: campaign.get_interested_calls("calls_life") || 0,
-        calls_transferred: campaign.campaign_stat.transferred_count_life || 0,
-        calls_recorded: campaign.campaign_stat.recordings_count_life || 0,
+        calls_transferred: campaign.campaign_stat.try(:transferred_count_life) || 0,
+        calls_recorded: campaign.campaign_stat.try(:recordings_count_life) || 0,
         left_message: campaign.stats_custom_by_code("AL","calls_life") + campaign.stats_custom_by_code("AA","calls_life"),
-        no_answer: campaign.campaign_stat.no_answer_calls_count_life || 0,
+        no_answer: campaign.campaign_stat.try(:no_answer_calls_count_life) || 0,
       }
     end
     return calls_stat_list
