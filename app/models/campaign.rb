@@ -50,7 +50,7 @@ class Campaign < ActiveRecord::Base
         calls_forever: campaign.campaign_stat.total_calls_made_count_life || 0,
         calls_today: campaign.campaign_stat.total_calls_made_count_today || 0,
         calls_in_progress: campaign.campaign_stat.calculated_calls_in_progress || 0,
-        total_donations: campaign.campaign_stat.amount_donaions_life || 0,
+        total_donations: campaign.campaign_stat.amount_donations_life || 0,
         calls_remaining: campaign.campaign_stat.dialable_leads || 0,
         calls_answered: campaign.stats_custom_by_code("PU","calls_today") || 0,
         calls_interested: campaign.get_interested_calls("calls_today") || 0,
