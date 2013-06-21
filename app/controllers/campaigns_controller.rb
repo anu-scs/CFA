@@ -1,13 +1,7 @@
 class CampaignsController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   def index
-    @campaigns = Campaign.includes(:campaign_stat).active.limit 10
-    @pending_campaigns = Campaign.includes(:campaign_stat).pending.limit 10
-    
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    redirect_to :root
   end
 
   def show
