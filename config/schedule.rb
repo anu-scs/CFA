@@ -18,6 +18,14 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+# Update campaign global table
  every 1.minute do
     rake "campaign_update:update_campaign_global"
  end
+
+# Update campaign stat table
+ every 1.minute do
+    rake "campaign:update_campaign_stat"
+ end
+
