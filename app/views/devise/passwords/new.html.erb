@@ -20,15 +20,15 @@
           </div>
         </div>
         <div class="form-actions">
-          <button type="button" id="back-btn" class="btn">
-            <i class="m-icon-swapleft"></i> Back
-          </button>
-          <%= f.submit "Submit", :class => "btn green pull-right"%>
-          <i class="m-icon-swapright m-icon-white"></i>            
+          <i class="m-icon-swapleft"></i>
+          <%= link_to 'Back', new_user_session_path,
+            :class => 'btn', :id => 'back-btn' %>
+          <%= button_tag( :class => "btn green pull-right") do %>
+            Sign up <i class="m-icon-swapright m-icon-white"></i>
+          <% end %>
         </div>
       <% end %>
     </div>      
     <!-- END FORGOT PASSWORD FORM -->      
-    <%= render "devise/shared/links" %>
   </div>  
 </div>  
