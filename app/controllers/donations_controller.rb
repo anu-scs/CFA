@@ -5,7 +5,7 @@ class DonationsController < ApplicationController
   def express_checkout
     response = EXPRESS_GATEWAY.setup_purchase((params[:donation][:amount].to_f * 100),
       ip: request.remote_ip,
-      return_url: url_for(:action => 'has_donated', :campaign_id => params[:campaign_id], :only_path => false),
+      return_url: url_for(:action => 'has_donated', :campaign_id => params[:donation][:campaign_id], :only_path => false),
       cancel_return_url: url_for(:action => 'index', :controller => 'home', :only_path => false),
       locale: I18n.locale.to_s.sub(/-/, '_')
     )

@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:new ]
+  
   def index
     redirect_to :root
   end
