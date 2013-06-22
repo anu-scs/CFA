@@ -55,7 +55,7 @@ gem 'activemerchant'
 # To use debugger
 gem 'debugger'
 gem "font-awesome-rails"
-
+gem 'whenever', :require => false
 group:development do
   gem 'mysql2'
 end
