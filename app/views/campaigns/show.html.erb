@@ -251,7 +251,7 @@
 					<li><a class="cp-pause ph" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
 				</ul>
 			</div>
-			</div><%= @campaign.transcript_text rescue "" %></p>
+			</div> <p class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><%= @campaign.transcript_text rescue "" %></p>
                                                             <p><a href="#">www.mywebsite.com</a></p>
                                                             <ul class="unstyled inline">
                                                                <li><i class="icon-calendar"></i> <%= @campaign.campaign_start_date_time.strftime("%d %b %Y") rescue '' %></li>
@@ -270,22 +270,22 @@
   
                 <div class="portlet-body">
                   <div class="row-fluid">
-                    <a href="#" class="icon-btn span3">
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                       <i class="icon-play-circle"></i>
                       <div>Play Recordings</div>
-                      <span class="badge badge-success">4</span>
+                      <span class="badge badge-success">2</span>
                     </a>
-                    <a href="#" class="icon-btn span3">
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                       <i class="icon-facebook-sign"></i>
                       <div>Facebook Like</div>
-                      <span class="badge badge-info">12</span>
+                      <span class="badge badge-info">4</span>
                     </a>
-                    <a href="#" class="icon-btn span3">
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                       <i class="icon-twitter-sign"></i>
                       <div>Twitter Share</div>
-                      <span class="badge badge-info">12</span>
+                      <span class="badge badge-important">12</span>
                     </a>
-                    <a href="#" class="icon-btn span3">
+                    <a href="#" class="icon-btn span3 popovers" id="test" data-trigger="hover" data-placement="top" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                       <i class="icon-plus-sign"></i>
                       <div>Add Number</div>
                     </a>
@@ -300,24 +300,91 @@
                                                             <div class="portlet sale-summary">
                                                                <ul class="unstyled">
                                                                   <li class="firstLi">.</li>
-                                                                  <li>
+                                                                  <li class="popovers"  id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                                                                      <span class="sale-info">$ TODAY</span> 
                                                                      <span class="sale-num"><%= number_to_currency(@campaign.campaign_stat.amount_donations_today) rescue 0  %></span>
                                                                   </li>
-                                                                  <li>
+                                                                  <li class="popovers"  id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                                                                      <span class="sale-info">REMAINING </span> 
                                                                      <span class="sale-num"><%= number_to_currency(@campaign.campaign_stat.donations_remaining)  rescue 0 %></span>
                                                                   </li>
-                                                                  <li>
+                                                                  <li class="popovers"  id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                                                                      <span class="sale-info">DAILY BUDGET</span> 
                                                                      <span class="sale-num"><%= number_to_currency(@campaign.campaign_stat.daily_spent_budget)  rescue 0 %></span>
                                                                   </li>
-                                                                  <li>
+                                                                  <li class="popovers"  id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
                                                                      <span class="sale-info">DONORS</span> 
                                                                      <span class="sale-num"><%= @campaign.campaign_stat.number_donations_life  rescue 0 %></span>
                                                                   </li>
                                                                </ul>
-                                                               <a href="#" class="btn green mini" style="width: 95%;">DONOR CREDIT ROLL</a>
+                                                                                         
+                                                               <!--checking-->
+                                                               <div class="controls_part_inner popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
+                                                               <h3>Doner Credit Roll</h3>
+                                           
+                                           <div class="flexslider">
+                                            <ul class="slides">
+                                                <li>
+                                        		<div class="dispa_ktu">	
+                                                    <div class="displa_sect"><span id="nmae_display"> Rajesh Kumawat </span></div>
+                                                    <div class="displa_sect_last"><span id="amt_display"> $151 <em>(5,651 calls) </em></span></div>
+                                                    <div  style="clear:both; margin:0px;"></div>
+                                      			</div>
+                                                                                                                              
+                                     			<div class="dispa_ktu">	
+                                            		<div class="displa_sect"><span id="date_display"> 12/02/2013 </span></div>
+                                                	<div class="displa_sect_last"><span id="city_display"> Georgia, USA </span></div>
+                                     				<div  style="clear:both; margin:0px;"></div>
+                                          		</div>
+                                                </li>
+                                                <li>
+                                                     <div class="dispa_ktu">                                           
+                                                                <div class="displa_sect"><span id="nmae_display"> Om Prakash </span></div>
+                                                                <div class="displa_sect_last"><span id="amt_display"> $251 <em>(561 calls) </em></span></div>
+                                                                <div  style="clear:both; margin:0px;"></div>
+                                                       </div>
+                                                                                                                              
+                                            <div class="dispa_ktu">      
+                                            	<div class="displa_sect"><span id="date_display"> 12/02/2013 </span></div>
+                                                <div class="displa_sect_last"><span id="city_display"> New York, USA </span></div>
+                                                <div  style="clear:both; margin:0px;"></div>
+                                           	</div>
+                                     
+                                                </li>
+                                                <li>
+                                                      <div class="dispa_ktu">
+                                           	
+                                            	<div class="displa_sect"><span id="nmae_display"> Rohitash </span></div>
+                                                <div class="displa_sect_last"><span id="amt_display"> $451 <em>(5,651 calls) </em></span></div>
+                                                <div  style="clear:both; margin:0px;"></div>
+                                           	</div>
+                                                                                                                              
+                                             <div class="dispa_ktu">
+                                            	<div class="displa_sect"><span id="date_display"> 2/20/2013 </span></div>
+                                                <div class="displa_sect_last"><span id="city_display"> washington dc, USA </span></div>
+                                                <div  style="clear:both; margin:0px;"></div>
+                                           	</div>
+                                           
+                                                </li>
+                                                <li>
+                                                      <div class="dispa_ktu">                                        
+                                                        <div class="displa_sect"><span id="nmae_display"> Narendra </span></div>
+                                                        <div class="displa_sect_last"><span id="amt_display"> $181 <em>(5 calls) </em></span></div>
+                                                         <div  style="clear:both; margin:0px;"></div>
+                                                    </div>
+                                                                                                                              
+                                                    <div class="dispa_ktu">
+                                                        <div class="displa_sect"><span id="date_display"> 1/25/2013 </span></div>
+                                                        <div class="displa_sect_last"><span id="city_display"> Florida, USA </span></div>
+                                                         <div  style="clear:both; margin:0px;"></div>                                                   
+                                                   </div>
+                                                </li>
+                                            </ul>
+                                          </div></div>
+                                          <a href="#addmyModal1" class="btn green btn-block popovers" donate_now_link" id="test" data-campaign="<%=campaign.id%>" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">Donate now <i class="m-icon-swapright m-icon-white"></i></a>
+
+                                                               <!--stop checking-->
+                                                            </div>
                                                             </div>
                                                          </div>
                                                          <!--end span4-->
@@ -478,14 +545,10 @@
                                     <span class="label label-inverse"><i class="icon-globe"></i> 123</span>
                                  </div>
                               </div>
-                           </div></div>
-                       
-                     
+                           </div>
+                          </div>
                   <!-- END PORTLET-->
-               
             </div>
-                 	
-                  
                   <!-- END SAMPLE TABLE PORTLET-->
                             <!-- BEGIN PORTLET-->
                      <div class="portlet">
