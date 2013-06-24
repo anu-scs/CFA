@@ -8,32 +8,32 @@
             <a href="javascript:;" class="btn mini pull-live-stat" data-status="forever" data-campaign="<%=campaign.id%>">Forever</a>
           </div>
         </div>
-      </h4>                            
+      </h4>
     </div>
 
     <ul class="unstyled">
       <li class="firstLi"></li>
       <li class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
         <span class="sale-info">Calls Remaining <i class="icon-plus"></i></span>
-        <span class="sale-num" id="calls_remaining_<%=campaign.id%>"><%=campaign.campaign_stat.dialable_leads rescue 0 %></span>
+        <span class="sale-num" id="calls_remaining_<%=campaign.id%>"><%=(campaign.campaign_stat.dialable_leads rescue 0) || 0 %></span>
       </li>
      <li class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
         <span class="sale-info">Answered </span>
-        <span class="sale-num" id="calls_answered_<%=campaign.id%>"><%=campaign.stats_custom_by_code("PU","calls_today") rescue 0 %> </span>
+        <span class="sale-num" id="calls_answered_<%=campaign.id%>"><%=(campaign.stats_custom_by_code("PU","calls_today") rescue 0) || 0  %> </span>
       </li>
       <li class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
         <span class="sale-info">Interested</span>
         <span class="sale-num" id="calls_interested_<%=campaign.id%>">
-          <%= campaign.get_interested_calls("calls_today") %>
+          <%= campaign.get_interested_calls("calls_today") || 0 %>
         </span>
       </li>
       <li class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
         <span class="sale-info">Transferred</span>
-        <span class="sale-num" id="calls_transferred_<%=campaign.id%>"><%= campaign.campaign_stat.transferred_count_today rescue 0 %><!--transferred_count_.campaign_stats--></span>
+        <span class="sale-num" id="calls_transferred_<%=campaign.id%>"><%= (campaign.campaign_stat.transferred_count_today rescue 0) || 0  %><!--transferred_count_.campaign_stats--></span>
       </li>
       <li class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
         <span class="sale-info">Recorded</span>
-        <span class="sale-num" id="calls_recorded_<%=campaign.id%>"><%= campaign.campaign_stat.recordings_count_today rescue 0 %></span>
+        <span class="sale-num" id="calls_recorded_<%=campaign.id%>"><%= (campaign.campaign_stat.recordings_count_today rescue 0) || 0  %></span>
       </li>
       <li class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
         <span class="sale-info">Left Message</span>
@@ -43,7 +43,7 @@
       </li>
       <li class="popovers" id="test" data-trigger="hover" data-placement="left" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top">
         <span class="sale-info">No Answer</span>
-        <span class="sale-num" id="no_answer_<%=campaign.id%>"><%=campaign.campaign_stat.no_answer_calls_count_today rescue 0 %></span>
+        <span class="sale-num" id="no_answer_<%=campaign.id%>"><%=(campaign.campaign_stat.no_answer_calls_count_today rescue 0) || 0  %></span>
       </li>
     </ul>
    
