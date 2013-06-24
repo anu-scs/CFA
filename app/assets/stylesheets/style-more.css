@@ -22,7 +22,7 @@
 #chartContainer{ display: inline;}
 .firstLi{ border-top: none !important; color: #fff; display: block; height: 0px; padding-bottom: 0 !important;}
 
-.borderedProfile{ border-bottom: 1px solid #b2b2b2; margin-bottom: 20px;}
+.borderedProfile{ /*border-bottom: 1px solid #b2b2b2;*/ border-bottom: 1px solid #EEEEEE; margin-bottom: 20px;}
 
 .grayBox{ background: #f7f9fd !important; border: 1px solid #899FB6;}
 .dashboard-stat .details1 {

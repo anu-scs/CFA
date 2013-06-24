@@ -2,6 +2,9 @@
   <div class="caption"><i class="icon-reorder"></i>Campaigns</div>
 </div>
 <div class="portlet-body">
+  <div class="addcampaign">
+    <a href="<%=new_campaign_path%>" class="btn red mini addcampaignbutton">Add New Campaign <b class="plusecam"> + </b></a>
+  </div>
   <div class="tabbable portlet-tabs">
     <ul class="nav nav-tabs">
       <li><a href="#portlet_tab3" data-toggle="tab">Ended Campaigns</a></li>
@@ -10,20 +13,20 @@
     </ul>
     <div  class="tab-content">
 
-<div class="tab-pane active borderedProfile" id="portlet_tab1">
+<div class="tab-pane active " id="portlet_tab1">
   <% @campaigns.each do |campaign| %>
     <div class="row-fluid profile">
       <div class="span12">
-        <div class="tab-pane row-fluid active" id="tab_1_1">
+        <div class="tab-pane row-fluid active borderedProfile" id="tab_1_1">
 
           <ul class="unstyled profile-nav span3">
             <li>
               <%= image_tag campaign.campaign_images.first.campimage_url rescue '' %>
             </li>
-            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS FOREVER <span class="littleSpan" id="calls_forever_<%=campaign.id%>"><%=campaign.campaign_stat.total_calls_made_count_life rescue 0 %></span></a></li>
-            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS TODAY <span class="littleSpan yellow" id="calls_today_<%=campaign.id%>"><%=campaign.campaign_stat.total_calls_made_count_today rescue 0 %></span></a></li>
-            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS IN PROGRESS <span class="littleSpan mauve" id="calls_in_progress_<%=campaign.id%>"><%=campaign.campaign_stat.calculated_calls_in_progress rescue 0 %></span></a></li>
-            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">TOTAL DONATIONS <span class="littleSpan green" id="total_donations_<%=campaign.id%>"><%=campaign.campaign_stat.amount_donations_life rescue 0 %></span></a></li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS FOREVER <span class="littleSpan" id="calls_forever_<%=campaign.id%>"><%=(campaign.campaign_stat.total_calls_made_count_life rescue 0) || 0 %></span></a></li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS TODAY <span class="littleSpan yellow" id="calls_today_<%=campaign.id%>"><%=(campaign.campaign_stat.total_calls_made_count_today rescue 0) || 0 %></span></a></li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">CALLS IN PROGRESS <span class="littleSpan mauve" id="calls_in_progress_<%=campaign.id%>"><%=(campaign.campaign_stat.calculated_calls_in_progress rescue 0) || 0 %></span></a></li>
+            <li class="popovers" id="test" data-trigger="hover" data-placement="right" data-content="Popover body goes here! Popover body goes here!" data-original-title="Popover in top"><a href="#">TOTAL DONATIONS <span class="littleSpan green" id="total_donations_<%=campaign.id%>"><%=(campaign.campaign_stat.amount_donations_life rescue 0) || 0 %></span></a></li>
           </ul>
 
           <div class="span9">

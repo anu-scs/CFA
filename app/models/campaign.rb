@@ -27,8 +27,8 @@ class Campaign < ActiveRecord::Base
   scope :pending, where(status: STATUS_PENDING)
 
   def stats_custom_by_code(status_code, meth)
-    stats_custom = campaign_stats_custom.where(status_code: status_code).first rescue nil
-    return stats_custom.send(meth.to_sym) rescue 0
+    rtn_val = campaign_stats_custom.where(status_code: status_code).first.send(meth.to_sym) rescue 0
+    return rtn_val || 0
   end
 
   def get_interested_calls(stat_type)
