@@ -27,8 +27,8 @@ namespace :campaign_update do
     %w[HR_CUSTOMER HR_AGENT HR_NOANSWER AL SVYEXT PU NA AA AB B PM SVYREC SVYCLM SVYHU SVYVM XFER DNC].each do |stat_code|
       campaign_global = CampaignGlobal.where(stat_code: ("CampaignStatsCustom::"+stat_code).constantize).first
       unless campaign_global.blank?
-        campaign_global.value_today = CampaignStatsCustom.sum(:calls_today).where(status_code: stat_code)
-        campaign_global.value_life = CampaignStatsCustom.sum(:calls_life).where(status_code: stat_code)
+        campaign_global.value_today = CampaignStatsCustom.where(status_code: stat_code).sum(:calls_today)
+        campaign_global.value_life = CampaignStatsCustom.where(status_code: stat_code).sum(:calls_life)
         campaign_global.save
       end
     end
