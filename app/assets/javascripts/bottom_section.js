@@ -22,6 +22,7 @@
 //= require jquery.gritter
 //= require jquery.pulsate.min
 
-
+//= require jquery.validate.min
+//= require login
 
 // require jquery.ui.slider-rtl.min
