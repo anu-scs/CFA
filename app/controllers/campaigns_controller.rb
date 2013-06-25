@@ -87,5 +87,25 @@ class CampaignsController < ApplicationController
     calls_stat_list = Campaign.get_calls_stat_hash(params[:campaign_id], params[:status])
     render json: calls_stat_list.to_json
   end
+
+  def get_calls_forever
+    campaign_stat = Campaign.find(params[:id]).campaign_stat rescue nil
+    render :text => campaign_stat.try(:total_calls_made_count_life) || 0
+  end
+
+  def get_calls_today
+    campaign_stat = Campaign.find(params[:id]).campaign_stat rescue nil
+    render :text => campaign_stat.try(:total_calls_made_count_today) || 0
+  end
+
+  def get_donation_amount
+    campaign_stat = Campaign.find(params[:id]).campaign_stat rescue nil
+    render :text => campaign_stat.try(:amount_donations_life).to_i || 0
+  end
+
+  def get_calls_in_progress
+    campaign_stat = Campaign.find(params[:id]).campaign_stat rescue nil
+    render :text => campaign_stat.try(:calls_in_progress) || 0
+  end
 end
 

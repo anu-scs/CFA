@@ -12,6 +12,12 @@ Cfa::Application.routes.draw do
       get 'search_pending_campaign'
       get 'get_calls_stat'
     end
+    member do
+      get 'get_calls_forever'
+      get 'get_calls_today'
+      get 'get_donation_amount'
+      get 'get_calls_in_progress'
+    end
   end
 
   resources :campaign_globals do

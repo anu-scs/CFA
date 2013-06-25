@@ -6,7 +6,7 @@
         <div class="span6 responsive popovers" data-tablet="span6" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="Picked up and listened to all or a portion of the message but hung up the phone" data-original-title="Picked up, Hung up">
           <div class="circle-stat">
             <div class="visual">
-              <input class="knobify" data-width="115" data-fgcolor="#4b8df8" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="+<%= @campaign.stats_custom_by_code("PU","calls_today") rescue 0 %>" data-max="100" data-min="-100" />
+              <input class="knobify" data-width="115" data-fgcolor="#4b8df8" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= @campaign.stats_custom_by_code("PU","calls_today") rescue 0 %>" data-max="<%= @campaign.stats_custom_by_code("PU","calls_life") rescue 0 %>" data-min="0" />
             </div>
             <div class="details">
               <div class="title">Answered <i class="icon-caret-up"></i></div>
@@ -19,7 +19,7 @@
           <div class="span6 responsive popovers" data-tablet="span6 fix-margin" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="When called the number exceeded the maximum ring time." data-original-title="No answer or bad number">
             <div class="circle-stat block">
               <div class="visual">
-                <input class="knobify" data-width="115" data-fgcolor="#852b99" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="+<%=(@campaign.campaign_stat.no_answer_calls_count_today rescue 0) || 0 %>" data-max="100" data-min="-100" />
+                <input class="knobify" data-width="115" data-fgcolor="#852b99" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= (@campaign.campaign_stat.no_answer_calls_count_today ) || 0 %>" data-max="<%= (@campaign.campaign_stat.no_answer_calls_count_life) || 0 %>" data-min="0" />
               </div>
               <div class="details">
                 <div class="title">No Answer <i class="icon-caret-up"></i></div>
@@ -32,24 +32,29 @@
           <div class="span6 responsive popovers" data-tablet="span6" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="After they picked up the message was played, and the caller pressed 1 to connect with their elected official" data-original-title="Caller listened and selected option 1">
             <div class="circle-stat block">
               <div class="visual">
-                <input class="knobify" data-width="115" data-fgcolor="#ffb848" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="-<%= (@campaign.get_interested_calls("calls_today")) || 0 %>" data-max="100" data-min="-100" />
+                <input class="knobify" data-width="115" data-fgcolor="#ffb848" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= @campaign.get_interested_calls("calls_today") || 0 %>" data-max="<%= @campaign.get_interested_calls("calls_life") || 0 %>" data-min="0" />
               </div>
               <div class="details">
                 <div class="title">Interested <i class="icon-caret-down down"></i></div>
-                <div class="number"><span class="sale-num" id="calls_interested_<%=@campaign.id%>"><%= (@campaign.get_interested_calls("calls_today")) || 0 %>%
+                <div class="number"><span class="sale-num" id="calls_interested_<%=@campaign.id%>">
+                <%= (@campaign.get_interested_calls("calls_life")) || 0 %>
               </div>
             </div>
           </div>
         </div>
         <div class="span6 responsive popovers" data-tablet="span6 fix-margin" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="The system automatically leaves a custom message for answering machines when they are detected." data-original-title="Left message on answering machine">
           <div class="circle-stat block">
+          <%
+           left_msg_today = @campaign.stats_custom_by_code("AL","calls_today") + @campaign.stats_custom_by_code("AA","calls_today")
+           left_msg_life = @campaign.stats_custom_by_code("AL","calls_life") + @campaign.stats_custom_by_code("AA","calls_life")
+          %>
             <div class="visual">
-              <input class="knobify" data-width="115" data-fgcolor="#e02222" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="+<%= @campaign.stats_custom_by_code("AL","calls_today") + (@campaign.stats_custom_by_code("AA","calls_today")) || 0 %> " data-max="100" data-min="-100" />
+              <input class="knobify" data-width="115" data-fgcolor="#e02222" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= left_msg_today %> " data-max="<%= left_msg_life %>" data-min="0" />
             </div>
             <div class="details">
               <div class="title">Left Message <i class="icon-caret-up"></i></div>
                 <div class="number"><span class="sale-num" id="left_message_<%=@campaign.id%>">
-                  <%= (@campaign.stats_custom_by_code("AL","calls_today") + @campaign.stats_custom_by_code("AA","calls_today")) || 0 %>$</div>
+                  <%= left_msg_life %></div>
                 </div>
               </div>
             </div>
@@ -61,7 +66,7 @@
         <div class="span6 responsive popovers" data-tablet="span6" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="The caller successfully called their elected official" data-original-title="Successfully Connected">
           <div class="circle-stat">
             <div class="visual">
-              <input class="knobify" data-width="115" data-fgcolor="#4b8df8" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="+<%= (@campaign.campaign_stat.transferred_count_today rescue 0) || 0 %>" data-max="100" data-min="-100" />
+              <input class="knobify" data-width="115" data-fgcolor="#4b8df8" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= (@campaign.campaign_stat.transferred_count_today rescue 0) || 0 %>" data-max="<%= (@campaign.campaign_stat.transferred_count_life rescue 0) || 0 %>" data-min="0" />
             </div>
             <div class="details">
               <div class="title">Transferred <i class="icon-caret-up"></i></div>
@@ -73,11 +78,11 @@
       <div class="span6 responsive popovers" data-tablet="span6 fix-margin" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="The caller actively wished to be removed from future calls." data-original-title="Pressed 9 to Opt out">
         <div class="circle-stat block">
           <div class="visual">
-            <input class="knobify" data-width="115" data-fgcolor="#852b99" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="+19" data-max="100" data-min="-100" />
+            <input class="knobify" data-width="115" data-fgcolor="#852b99" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= @campaign.stats_custom_by_code("NI","calls_today") %>" data-max="<%= @campaign.stats_custom_by_code("NI","calls_life") %>" data-min="0" />
           </div>
           <div class="details">
             <div class="title">Opted Out <i class="icon-caret-up"></i></div>
-              <div class="number">987</div>
+              <div class="number"><%= @campaign.stats_custom_by_code("NI","calls_life") %></div>
             </div>
           </div>
         </div></div>
@@ -85,11 +90,11 @@
         <div class="span6 responsive popovers" data-tablet="span6" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="The caller elected to publish their call to the website and it was approved by our moderators" data-original-title="Call recording published">
           <div class="circle-stat block">
             <div class="visual">
-              <input class="knobify" data-width="115" data-fgcolor="#ffb848" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="-<%= (@campaign.campaign_stat.recordings_count_today rescue 0) || 0 %>" data-max="100" data-min="-100" />
+              <input class="knobify" data-width="115" data-fgcolor="#ffb848" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= (@campaign.campaign_stat.recordings_count_today rescue 0) || 0 %>" data-max="<%= (@campaign.campaign_stat.recordings_count_life rescue 0) || 0 %>" data-min="0" />
             </div>
             <div class="details">
               <div class="title">Recorded <i class="icon-caret-down down"></i></div>
-                <div class="number"><span class="sale-num" id="calls_recorded_<%=@campaign.id%>"><%= (@campaign.campaign_stat.recordings_count_life rescue 0) || 0 %></span>%
+                <div class="number"><span class="sale-num" id="calls_recorded_<%=@campaign.id%>"><%= (@campaign.campaign_stat.recordings_count_life rescue 0) || 0 %></span>
               </div>    
             </div>
           </div>
@@ -97,11 +102,11 @@
         <div class="span6 responsive popovers" data-tablet="span6 fix-margin" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="The caller pressed 6 to share the campaign with friends and family." data-original-title="Referred a friend">
           <div class="circle-stat block">
             <div class="visual">
-              <input class="knobify" data-width="115" data-fgcolor="#e02222" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="+58" data-max="100" data-min="-100" />
+              <input class="knobify" data-width="115" data-fgcolor="#e02222" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="0" data-max="100" data-min="0" />
             </div>
             <div class="details">
               <div class="title">Shared <i class="icon-caret-up"></i></div>
-              <div class="number">120.32$</div>
+              <div class="number">0</div>
             </div>
           </div>
         </div>
