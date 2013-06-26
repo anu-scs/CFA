@@ -17,6 +17,7 @@ Cfa::Application.routes.draw do
       get 'get_calls_today'
       get 'get_donation_amount'
       get 'get_calls_in_progress'
+      get 'get_population_destribution_pyramid_chart', :format => :xml
     end
   end
 

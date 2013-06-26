@@ -19,7 +19,7 @@
           <div class="span6 responsive popovers" data-tablet="span6 fix-margin" data-desktop="span6" data-trigger="hover" data-placement="left" data-content="When called the number exceeded the maximum ring time." data-original-title="No answer or bad number">
             <div class="circle-stat block">
               <div class="visual">
-                <input class="knobify" data-width="115" data-fgcolor="#852b99" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= (@campaign.campaign_stat.no_answer_calls_count_today ) || 0 %>" data-max="<%= (@campaign.campaign_stat.no_answer_calls_count_life) || 0 %>" data-min="0" />
+                <input class="knobify" data-width="115" data-fgcolor="#852b99" data-thickness=".2" data-skin="tron" data-displayprevious="true" value="<%= (@campaign.campaign_stat.no_answer_calls_count_today rescue 0) || 0 %>" data-max="<%= (@campaign.campaign_stat.no_answer_calls_count_life rescue 0) || 0 %>" data-min="0" />
               </div>
               <div class="details">
                 <div class="title">No Answer <i class="icon-caret-up"></i></div>

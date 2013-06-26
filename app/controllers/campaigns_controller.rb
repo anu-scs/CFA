@@ -107,5 +107,13 @@ class CampaignsController < ApplicationController
     campaign_stat = Campaign.find(params[:id]).campaign_stat rescue nil
     render :text => campaign_stat.try(:calls_in_progress) || 0
   end
+  
+  def get_population_destribution_pyramid_chart
+    @campaign = Campaign.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml
+    end 
+  end
 end
 

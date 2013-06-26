@@ -416,7 +416,7 @@
                                        <div class="portlet-body" id="bigChartt">
 						<script type="text/javascript"><!--
                                   var myChart = new FusionCharts( "Pyramid", "myChartId", "100%", "500", "0" );
-                                  myChart.setXMLUrl("/assets/data3.xml");
+                                  myChart.setXMLUrl("<%= get_population_destribution_pyramid_chart_campaign_path(@campaign.id) %>");
                                   myChart.render("bigChartt");
                            // -->
                            </script>
