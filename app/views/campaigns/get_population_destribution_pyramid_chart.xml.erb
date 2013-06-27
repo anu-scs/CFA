@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chart manageResize="1" dataStreamURL='<%= get_population_destribution_pyramid_chart_campaign_path(@campaign.id) %>' refreshInterval='6' bgColor="CCCCCC,FFFFFF"  caption="Population Distribution" baseFontColor="333333" decmials="0" numberSuffix="%" pyramidYScale="40" captionPadding="0" isSliced="1">
+        <set value="<%= answered_life(@campaign) %>" label="Answered" color="0066CC"/>
+        <set value="<%= no_answer_life(@campaign) %>" label="No Answered" color="852b99"/>
+        <set value="<%= interested_life(@campaign) %>" label="Interested" color="FFCC33" />
+        <set value="<%= left_msg_life_life(@campaign) %>" label="Left Message" color="A10303"/>
+        <set value="<%= transferred_life(@campaign) %>" label="Transferred" color="0066CC"/>
+        <set value="<%= opted_out_life(@campaign) %>" label="Opted Out" color="852b99"/>
+        <set value="<%= recorded_life(@campaign) %>" label="Recorded" color="FFCC33 "/>
+        <set value="10" label="Shared" color="A10303"/>
+      </chart>
