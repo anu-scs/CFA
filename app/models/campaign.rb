@@ -6,9 +6,13 @@ class Campaign < ActiveRecord::Base
   belongs_to :campaign_type
   
   has_one :campaign_stat, :dependent => :destroy
+  has_one :campaign_attribute, :dependent => :destroy
+  
   has_many :campaign_stats_custom, :dependent => :destroy
   has_many :campaign_stats_geo, :dependent => :destroy
   has_many :donations, :dependent => :destroy
+  has_many :campaign_menus, :dependent => :destroy
+  has_many :campaign_surveys, :dependent => :destroy
     
   has_many :campaign_images, :dependent => :destroy
   
